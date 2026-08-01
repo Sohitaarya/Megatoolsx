@@ -1,0 +1,5 @@
+# Cloudflare Pages + Netlify — SPA Routing
+# Static files (assets, csv, sitemap, robots, images) are served directly.
+# Every other route rewrites to index.html (BrowserRouter, no 404 on refresh).
+
+/*    /index.html   200

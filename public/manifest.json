@@ -1,0 +1,18 @@
+{
+  "name": "MegatoolsX - World's Largest Digital Tools Knowledge Platform",
+  "short_name": "MegatoolsX",
+  "description": "Learn how to use any digital tool, AI tool, software, website, app, and browser extension. Step-by-step guides, tutorials, and solutions for 2,500+ tools.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

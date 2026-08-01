@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /my-tools
+Disallow: /compare
+
+Sitemap: https://megatoolsx.com/sitemap.xml

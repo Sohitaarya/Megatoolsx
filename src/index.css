@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+}
+
+/* Print styles — clean guide output when using the Print button */
+@media print {
+  header, footer, aside, nav {
+    display: none !important;
+  }
+  main {
+    padding-top: 0 !important;
+  }
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  .min-h-screen, .bg-black {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  .text-white, h1, h2, h3, h4 {
+    color: #111 !important;
+  }
+  a {
+    color: #4338ca !important;
+    text-decoration: underline;
+  }
+  * {
+    box-shadow: none !important;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  }
+
+  .gradient-card {
+    background: linear-gradient(145deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+  }
+
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
