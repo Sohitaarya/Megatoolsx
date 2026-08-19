@@ -1,10 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Search, TrendingUp, Sparkles, ArrowRight, Grid, Bot, Palette, Code, Globe, Zap, BookOpen, Users, Cloud, Smartphone, ChevronDown, Mail, Send, Star, Quote } from 'lucide-react'
+import { Search, Sparkles, ArrowRight, Grid, Bot, Palette, Code, Globe, Zap, BookOpen, Users, Cloud, Smartphone, ChevronDown, Mail, Send, Star, Quote } from 'lucide-react'
 import { useToolsStore } from '@/store/toolsStore'
 import { Button, SectionHeader, StatusBadge } from '@/components/ui'
 import { useSearchStore } from '@/store/searchStore'
 import { useState } from 'react'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { breadcrumbSchema } from '@/components/seo/schemas'
+import { DiscoveryWidget } from '@/discovery'
 
 const categoryIcons: Record<string, any> = {
   'Video/Audio Tools': Zap, 'Content Writing': BookOpen, 'SEO/Digital Marketing': Globe,
@@ -47,6 +50,13 @@ export function Home() {
 
   return (
     <div>
+      <SEOHead
+        title="Master Every Digital Tool in One Place"
+        description="Free guides, tutorials, and solutions for 2500+ digital tools, AI tools, software, and apps. Learn how to use any tool step-by-step at MegatoolsX."
+        path="/"
+        jsonLd={breadcrumbSchema([{ name: 'Home', path: '/' }])}
+      />
+
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/5 to-transparent" />
@@ -93,6 +103,15 @@ export function Home() {
               <Link to="/categories" className="px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 text-sm hover:bg-white/10 transition-all">📂 Categories</Link>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Discovery Widgets */}
+      <section className="py-16 lg:py-20 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <DiscoveryWidget widget='trendingToday' limit={6} className="mt-10" />
+          <DiscoveryWidget widget='aiRecommended' limit={6} className="mt-10" />
+          <DiscoveryWidget widget='recentlyUpdated' limit={6} className="mt-10" />
         </div>
       </section>
 
@@ -317,19 +336,26 @@ const testimonials = [
 
 function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
   const [open, setOpen] = useState(index === 0)
+  const panelId = `faq-panel-${index}`
   return (
     <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.04 }}
       className="rounded-2xl border border-white/5 bg-white/[0.03] overflow-hidden">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left"
-      >
-        <span className="text-white font-medium">{question}</span>
-        <ChevronDown className={`w-5 h-5 text-indigo-400 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
-      </button>
+      <h3>
+        <button
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-controls={panelId}
+          className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left"
+        >
+          <span className="text-white font-medium">{question}</span>
+          <ChevronDown className={`w-5 h-5 text-indigo-400 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+        </button>
+      </h3>
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
+            id={panelId}
+            role="region"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -366,12 +392,15 @@ function NewsletterForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch justify-center gap-3 max-w-md mx-auto">
+      <label htmlFor="newsletter-email" className="sr-only">Email address</label>
       <input
+        id="newsletter-email"
         type="email"
         required
         value={email}
         onChange={e => setEmail(e.target.value)}
         placeholder="Enter your email"
+        autoComplete="email"
         className="flex-1 px-5 py-3.5 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
       />
       <Button type="submit" size="lg" icon={Send}>Subscribe</Button>

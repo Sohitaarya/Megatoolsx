@@ -5,6 +5,7 @@ import { getAiToolDetail } from '@/data/aiToolData'
 import { AiToolSidebar } from './AiToolSidebar'
 import { StatusBadge } from '@/components/ui'
 import { getCsvCategoryColor } from '@/lib/utils'
+import { SEOHead } from '@/components/seo/SEOHead'
 import { ChevronRight, Sparkles } from 'lucide-react'
 
 export function AiToolPageLayout() {
@@ -16,16 +17,23 @@ export function AiToolPageLayout() {
 
   if (!tool) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <Sparkles className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-white mb-2">AI Tool Not Found</h2>
-          <p className="text-gray-400 mb-6">The AI tool you're looking for doesn't exist in our collection.</p>
-          <Link to="/ai-tools" className="inline-flex px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium hover:from-indigo-700 hover:to-purple-700 transition-all">
-            Browse All AI Tools
-          </Link>
+      <>
+        <SEOHead
+          title="AI Tool Not Found"
+          description="The requested AI tool does not exist on MegatoolsX. Browse the AI tools collection instead."
+          noIndex
+        />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <Sparkles className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-white mb-2">AI Tool Not Found</h2>
+            <p className="text-gray-400 mb-6">The AI tool you're looking for doesn't exist in our collection.</p>
+            <Link to="/ai-tools" className="inline-flex px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium hover:from-indigo-700 hover:to-purple-700 transition-all">
+              Browse All AI Tools
+            </Link>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 

@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Search, Globe, BarChart, Hash, TrendingUp, Sparkles, FileText, Users, Target, Award, Share2, Eye, Zap, Star, PieChart, Download } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function SeoMarketingTools({ tool }: { tool: CsvTool }) {
-  const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
   const name = tool.name.toLowerCase()
 
   if (name.includes('keyword') && name.includes('planner')) return <KeywordPlanner tool={tool} />
@@ -31,11 +31,7 @@ export function SeoMarketingTools({ tool }: { tool: CsvTool }) {
   if (name.includes('trend')) return <TrendAnalyzer tool={tool} />
 
   return (
-    <ToolWrapper tool={tool}>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" icon={Globe} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`📊 ${tool.name} Results\n\nAnalysis complete for: ${input || 'Default'}\nStatus: Success\n\n📈 Metrics analyzed: ${Math.floor(5 + Math.random() * 20)}\n💰 Estimated value: $${Math.floor(Math.random() * 10000)}\n🏆 Score: ${Math.floor(60 + Math.random() * 40)}/100`); setProcessing(false) }, 1200) }} icon={BarChart} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    <CapabilityTool tool={tool} />
   )
 }
 

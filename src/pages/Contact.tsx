@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { Mail, MessageCircle, Globe, MapPin, Send, CheckCircle } from 'lucide-react'
-import { Helmet } from 'react-helmet-async'
+import { Mail, MessageCircle, Globe, Send, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { useState } from 'react'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { contactPageSchema, breadcrumbSchema } from '@/components/seo/schemas'
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -14,12 +15,20 @@ export function Contact() {
     setTimeout(() => setSubmitted(false), 3000)
   }
 
+  const description = "Get in touch with the MegatoolsX team. Have a question, suggestion, or need help with a digital tool guide? We're here to help!"
+  const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]
+
   return (
     <div>
-      <Helmet>
-        <title>Contact Us | MegatoolsX</title>
-        <meta name="description" content="Get in touch with the MegatoolsX team. We're here to help!" />
-      </Helmet>
+      <SEOHead
+        title="Contact Us"
+        description={description}
+        path="/contact"
+        jsonLd={[
+          contactPageSchema({ title: 'Contact Us', description, path: '/contact' }),
+          breadcrumbSchema(breadcrumbs),
+        ]}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
@@ -59,24 +68,24 @@ export function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm text-gray-400 mb-2">Your Name</label>
-                      <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50" placeholder="John Doe" />
+                      <label htmlFor="contact-name" className="block text-sm text-gray-400 mb-2">Your Name</label>
+                      <input id="contact-name" required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50" placeholder="John Doe" autoComplete="name" />
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-2">Your Email</label>
-                      <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50" placeholder="john@example.com" />
+                      <label htmlFor="contact-email" className="block text-sm text-gray-400 mb-2">Your Email</label>
+                      <input id="contact-email" required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50" placeholder="john@example.com" autoComplete="email" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">Subject</label>
-                    <input required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })}
+                    <label htmlFor="contact-subject" className="block text-sm text-gray-400 mb-2">Subject</label>
+                    <input id="contact-subject" required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50" placeholder="How can we help?" />
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">Message</label>
-                    <textarea required value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} rows={5}
+                    <label htmlFor="contact-message" className="block text-sm text-gray-400 mb-2">Message</label>
+                    <textarea id="contact-message" required value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} rows={5}
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 resize-y" placeholder="Tell us more about your inquiry..." />
                   </div>
                   <Button type="submit" icon={Send}>Send Message</Button>

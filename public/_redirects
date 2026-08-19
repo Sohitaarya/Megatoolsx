@@ -1,5 +1,16 @@
-# Cloudflare Pages + Netlify — SPA Routing
-# Static files (assets, csv, sitemap, robots, images) are served directly.
-# Every other route rewrites to index.html (BrowserRouter, no 404 on refresh).
+# ─────────────────────────────────────────────────────────────
+# Cloudflare Pages — Redirects & SPA routing (production)
+# Static files (assets, csv, sitemaps, robots, images) are served
+# directly. Every other route rewrites to index.html (SPA).
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+# ─────────────────────────────────────────────────────────────
 
-/*    /index.html   200
+# Legacy index.html → root
+/index.html  /  301
+
+# Strip any "www" subdomain to the apex (canonical host)
+https://www.megatoolsx.com/*  https://megatoolsx.com/:splat  301
+
+# SPA fallback — serves the app shell for client-side routes
+# (Missing routes render the NotFound page, which is <meta noindex>.)
+/*  /index.html  200

@@ -22,3 +22,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ── Secrets & credentials (Phase 3.7) ──────────────────────────────
+# Never commit API keys, service accounts, or tokens.
+.env
+.env.*
+!.env.example
+credentials/
+**/*.credentials.json
+**/*service-account*.json
+*.pem
+*.key
+# Report JSON files ARE legitimate artifacts — do NOT ignore them.
+
+# ── Generated local artifacts ─────────────────────────────────────
+*.tsbuildinfo

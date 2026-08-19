@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Atom, Activity, Star, Globe, Cpu, Zap, Droplet, Cloud, Leaf, Eye, BarChart, Sparkles, BookOpen, Weight, Ruler } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function ScienceTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -19,16 +20,7 @@ export function ScienceTools({ tool }: { tool: CsvTool }) {
   if (name.includes('unit') || name.includes('conversion') && name.includes('scientific')) return <ScientificConverter tool={tool} />
 
   return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 text-center"><Atom className="w-6 h-6 text-fuchsia-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Science</div></div>
-        <div className="p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-center"><Dna className="w-6 h-6 text-green-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Biology</div></div>
-        <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center"><Flask className="w-6 h-6 text-blue-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Chemistry</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={Microscope} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🔬 ${tool.name} Results\n\nScientific analysis complete\nResearch data processed\nLaboratory quality assured\n✅ Experiment complete`); setProcessing(false) }, 1000) }} icon={Sparkles} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    <CapabilityTool tool={tool} />
   )
 }
 

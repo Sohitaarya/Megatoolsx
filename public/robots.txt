@@ -1,7 +1,18 @@
+# MegatoolsX robots.txt — production
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
 User-agent: *
 Allow: /
+
+# User features / admin — no value in the index
 Disallow: /admin
 Disallow: /my-tools
 Disallow: /compare
 
+# App-like / utility paths that should never rank
+Disallow: /*?utm_
+Disallow: /*?ref=
+Disallow: /*?source=
+
 Sitemap: https://megatoolsx.com/sitemap.xml
+Sitemap: https://megatoolsx.com/sitemap-index.xml

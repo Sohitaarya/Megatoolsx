@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-08-11T18:31:31.334Z",
+  "site": "https://megatoolsx.com",
+  "gscStatus": "NOT_CONFIGURED",
+  "dataAvailability": "not_configured",
+  "property": "https://megatoolsx.com/",
+  "period": null,
+  "metrics": null,
+  "historyStatus": "memory",
+  "opportunities": [],
+  "technicalSeo": {
+    "indexability": "PASS",
+    "crawlEfficiency": "PASS",
+    "content": "PASS",
+    "intent": "PASS",
+    "urlIntegrity": "PASS"
+  },
+  "contentAudit": {
+    "duplicateTitles": 0,
+    "missingDescriptions": 0,
+    "overlongDescriptions": 0
+  },
+  "crawlAudit": {
+    "orphans": 0,
+    "brokenLinks": 0,
+    "duplicateUrls": 0,
+    "depthGt3": 0
+  },
+  "securityStatus": "PASS",
+  "liveHttp": "verified-7of7-200"
+}

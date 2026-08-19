@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { Scale, X, Trash2, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { useUserStore } from '@/store/userStore'
 import { useToolsStore } from '@/store/toolsStore'
 import { getColorForCategory } from '@/lib/utils'
+import { SEOHead } from '@/components/seo/SEOHead'
 
 export function Compare() {
   const { compare, clearCompare, toggleCompare, getRating } = useUserStore()
@@ -43,10 +43,11 @@ export function Compare() {
 
   return (
     <div>
-      <Helmet>
-        <title>Compare Tools | MegatoolsX</title>
-        <meta name="description" content="Compare your favorite tools side by side on MegatoolsX." />
-      </Helmet>
+      <SEOHead
+        title="Compare Tools"
+        description="Compare your favorite tools side-by-side on MegatoolsX."
+        path="/compare"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-10">

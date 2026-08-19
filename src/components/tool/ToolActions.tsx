@@ -135,7 +135,8 @@ export function ToolActions({ ref, className }: ToolActionsProps) {
           <button
             key={star}
             onClick={() => rateTool(ref.slug, star)}
-            title={`Rate ${star}/5`}
+            title={`Rate ${ref.name} ${star}/5`}
+            aria-label={`Rate ${ref.name} ${star} out of 5 stars`}
             className="transition-transform hover:scale-125"
           >
             <Star
@@ -143,6 +144,7 @@ export function ToolActions({ ref, className }: ToolActionsProps) {
                 'w-4 h-4',
                 myRating && star <= myRating ? 'text-yellow-500 fill-current' : 'text-gray-600'
               )}
+              aria-hidden="true"
             />
           </button>
         ))}

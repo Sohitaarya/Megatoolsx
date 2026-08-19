@@ -75,14 +75,14 @@ export function Footer() {
             </p>
 
             <div className="flex items-center gap-4">
-              <a href="https://x.com/megatoolsx" className="text-gray-600 hover:text-indigo-400 transition-colors" target="_blank" rel="noopener noreferrer">
-                <Globe className="w-5 h-5" />
+              <a href="https://x.com/megatoolsx" aria-label="MegatoolsX on X (Twitter)" className="text-gray-600 hover:text-indigo-400 transition-colors" target="_blank" rel="noopener noreferrer">
+                <Globe className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="https://github.com/megatoolsx" className="text-gray-600 hover:text-indigo-400 transition-colors" target="_blank" rel="noopener noreferrer">
-                <GitBranch className="w-5 h-5" />
+              <a href="https://github.com/megatoolsx" aria-label="MegatoolsX on GitHub" className="text-gray-600 hover:text-indigo-400 transition-colors" target="_blank" rel="noopener noreferrer">
+                <GitBranch className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="mailto:hello@megatoolsx.com" className="text-gray-600 hover:text-indigo-400 transition-colors">
-                <Mail className="w-5 h-5" />
+              <a href="mailto:hello@megatoolsx.com" aria-label="Email MegatoolsX" className="text-gray-600 hover:text-indigo-400 transition-colors">
+                <Mail className="w-5 h-5" aria-hidden="true" />
               </a>
             </div>
           </div>

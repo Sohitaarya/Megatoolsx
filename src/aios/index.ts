@@ -1,0 +1,21 @@
+/**
+ * AIOS — public surface.
+ */
+export { kernel } from './kernel'
+export type { AiosService, KernelOptions } from './kernel'
+export { MODEL_REGISTRY, selectModel, routeAndCall } from './router'
+export type { ModelMeta, ModelCapabilities, RoutingMode, RouteRequest, RouteResult } from './router'
+export { brain } from './brain'
+export type { PlanStep } from './brain'
+export { AiosMemory, aiosMemory } from './memory'
+export type { MemoryScope, MemoryRecord } from './memory'
+export { DIGITAL_EMPLOYEES, DigitalWorkerRegistry, digitalWorkers } from './digitalEmployees'
+export type { DigitalEmployeeDef, EmployeeRunInput } from './digitalEmployees'
+export { AUTONOMOUS_TASKS, AutonomousScheduler, autonomousScheduler } from './autonomousTasks'
+export type { AutonomousTask, TaskReport } from './autonomousTasks'
+export { SelfHealing, selfHealing } from './selfHealing'
+export type { HealthCheck, HealthReport, Severity } from './selfHealing'
+export { Recommender, recommender, scoreItem } from './recommender'
+export type { Recommendable, UserSignals, Recommendation } from './recommender'
+export { KnowledgeGraph, knowledgeGraph } from './knowledge'
+export type { KnowledgeEntity, KnowledgeRelation } from './knowledge'

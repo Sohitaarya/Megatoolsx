@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { Sparkles, FileText, Hash, Type, BookOpen, Pen, MessageSquare, Globe, Search, Download, Copy, Check, Eye, Edit3, List, Quote } from 'lucide-react'
+import { Sparkles, FileText, Hash, Type, BookOpen, Pen, MessageSquare, Globe, Search, Eye, Edit3, List, Quote } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
-import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function ContentWritingTools({ tool }: { tool: CsvTool }) {
-  const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
   const name = tool.name.toLowerCase()
 
   if (name.includes('blog')) return <BlogGenerator tool={tool} />
@@ -31,18 +31,11 @@ export function ContentWritingTools({ tool }: { tool: CsvTool }) {
   if (name.includes('press') || name.includes('release')) return <PressReleaseWriter tool={tool} />
   if (name.includes('newsletter')) return <NewsletterWriter tool={tool} />
 
-  return (
-    <ToolWrapper tool={tool}>
-      <InputField value={input} onChange={setInput} placeholder={`Enter content for ${tool.name}...`} label="Content Input" multiline icon={FileText} />
-      <SelectField options={['Professional', 'Creative', 'Academic', 'Casual', 'Formal']} label="Tone" />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`📝 ${tool.name} Generated!\n\n---\n${input || 'Your content will appear here...'}\n\n---\n✅ Generated successfully\nWords: ${Math.floor(50 + Math.random() * 200)}\nTone: Professional`); setProcessing(false) }, 1200) }} icon={Sparkles} label={`Generate with ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
-  )
+  return <CapabilityTool tool={tool} />
 }
 
 function BlogGenerator({ tool }: { tool: CsvTool }) {
-  const [topic, setTopic] = useState(''); const [tone, setTone] = useState('Professional'); const [length, setLength] = useState('1000'); const [result, setResult] = useState(''); const [loading, setLoading] = useState(false)
+  const [topic, setTopic] = useState(''); const [tone, setTone] = useState('Professional'); const [length, setLength] = useState('1000'); const [result, setResult] = useState(''); const [_loading, setLoading] = useState(false)
   return (
     <ToolWrapper tool={tool}>
       <InputField value={topic} onChange={setTopic} placeholder="Enter your blog topic..." label="Blog Topic" icon={FileText} />
@@ -50,7 +43,7 @@ function BlogGenerator({ tool }: { tool: CsvTool }) {
         <SelectField value={tone} onChange={setTone} options={['Professional', 'Conversational', 'Academic', 'Persuasive', 'Storytelling']} label="Tone" />
         <SelectField value={length} onChange={setLength} options={['500 words', '1000 words', '1500 words', '2000+ words']} label="Length" />
       </div>
-      <ActionButton onClick={() => { setLoading(true); setTimeout(() => { setResult(`# ${topic || 'Your Blog Title'}\n\n## Introduction\nIn today's fast-paced world, ${(topic || 'this topic').toLowerCase()} has become increasingly important. This comprehensive guide will walk you through everything you need to know.\n\n## Why ${topic || 'This Topic'} Matters\nUnderstanding ${(topic || 'this').toLowerCase()} is crucial for success in 2026. Here are the key reasons:\n\n1. **Increased Efficiency** - Save time and resources\n2. **Better Results** - Achieve higher quality outcomes\n3. **Competitive Advantage** - Stay ahead of the curve\n\n## How to Get Started\nGetting started is easier than you think. Follow these steps:\n\n1. Research and understand the basics\n2. Choose the right tools and resources\n3. Practice consistently\n4. Measure your results\n\n## Expert Tips\n- Start small and scale gradually\n- Learn from industry leaders\n- Use analytics to track progress\n\n## Conclusion\n${topic || 'This topic'} is transforming how we work. By following this guide, you're on your way to success!\n\n---\n📝 Generated: ${length} words | ${tone} tone`); setLoading(false) }, 2000) }} icon={Sparkles} label={loading ? 'Writing...' : 'Generate Blog Post'} />
+      <ActionButton onClick={() => { setLoading(true); setTimeout(() => { setResult(`# ${topic || 'Your Blog Title'}\n\n## Introduction\nIn today's fast-paced world, ${(topic || 'this topic').toLowerCase()} has become increasingly important. This comprehensive guide will walk you through everything you need to know.\n\n## Why ${topic || 'This Topic'} Matters\nUnderstanding ${(topic || 'this').toLowerCase()} is crucial for success in 2026. Here are the key reasons:\n\n1. **Increased Efficiency** - Save time and resources\n2. **Better Results** - Achieve higher quality outcomes\n3. **Competitive Advantage** - Stay ahead of the curve\n\n## How to Get Started\nGetting started is easier than you think. Follow these steps:\n\n1. Research and understand the basics\n2. Choose the right tools and resources\n3. Practice consistently\n4. Measure your results\n\n## Expert Tips\n- Start small and scale gradually\n- Learn from industry leaders\n- Use analytics to track progress\n\n## Conclusion\n${topic || 'This topic'} is transforming how we work. By following this guide, you're on your way to success!\n\n---\n📝 Generated: ${length} words | ${tone} tone`); setLoading(false) }, 2000) }} icon={Sparkles} label={_loading ? 'Writing...' : 'Generate Blog Post'} />
       {result && <OutputBox value={result} label="Blog Post" />}
     </ToolWrapper>
   )

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Globe, Telescope, Moon, Sun, Star, Map, Radar, Rocket, Sparkles, Activity, Clock } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function SpaceTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -19,16 +20,7 @@ export function SpaceTools({ tool }: { tool: CsvTool }) {
   if (name.includes('exoplanet')) return <ExoplanetTool tool={tool} />
 
   return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-center"><Telescope className="w-6 h-6 text-indigo-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Space</div></div>
-        <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-center"><Star className="w-6 h-6 text-purple-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Stars</div></div>
-        <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center"><Globe className="w-6 h-6 text-blue-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Planets</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={Telescope} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🌌 ${tool.name} Results\n\nSpace observation complete\nCelestial data analyzed\nDistance: ${(Math.random() * 1000000 + 100).toFixed(0)} light years\n✅ Analysis complete`); setProcessing(false) }, 1000) }} icon={Star} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    <CapabilityTool tool={tool} />
   )
 }
 

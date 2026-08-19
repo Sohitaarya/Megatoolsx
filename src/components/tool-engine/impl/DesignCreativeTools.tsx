@@ -2,10 +2,19 @@ import { useState } from 'react'
 import { Sparkles, Image, Type, Palette, Pen, Download, Upload, Eye, Maximize, Crop, Sliders, Layers, Droplet, Sun, Brush, Eraser, Star, Grid, Copy, Code, Search as SearchIcon } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
+import { DesignCreativeToolRouter } from '@/tools/design-creative'
+import { capabilityForDesign } from '@/data/designCreativeCapabilities'
 
 export function DesignCreativeTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
   const name = tool.name.toLowerCase()
+
+  // Real, browser-side design engines + honest statuses via the Design/Creative router.
+  const cap = capabilityForDesign(tool.slug, tool.name)
+  if (cap.status === 'working' || cap.status === 'requires-configuration' || cap.status === 'needs-data-fix') {
+    return <DesignCreativeToolRouter tool={tool} />
+  }
 
   if (name.includes('logo')) return <LogoGenerator tool={tool} />
   if (name.includes('thumbnail')) return <ThumbnailGenerator tool={tool} />
@@ -29,17 +38,8 @@ export function DesignCreativeTools({ tool }: { tool: CsvTool }) {
   if (name.includes('collage') || name.includes('photo') && name.includes('collage')) return <CollageMaker tool={tool} />
   if (name.includes('frame') || name.includes('photo') && name.includes('frame')) return <PhotoFrame tool={tool} />
 
-  return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        {['🎨', '🖌️', '✏️', '📐', '🖼️', '🎯'].map((e, i) => (
-          <div key={i} className="p-3 rounded-xl bg-white/5 border border-white/10 text-center text-2xl hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all cursor-pointer">{e}</div>
-        ))}
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Describe your creative project...`} label="Creative Brief" multiline icon={Sparkles} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🎨 Creative Design Generated!\n\nProject: ${input || 'Untitled'}\nStyle: Modern Minimal\nDimensions: 1920x1080\nFormat: PNG + SVG\n\n🎯 Ready for download\n📁 Files included: 3 variants`); setProcessing(false) }, 1200) }} icon={Sparkles} label={`Generate with ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    return (
+    <CapabilityTool tool={tool} />
   )
 }
 

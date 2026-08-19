@@ -2,16 +2,76 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#6366f1" />
+
+    <!-- Primary Meta -->
+    <title>MegatoolsX — World's Largest Digital Tools Knowledge Platform</title>
+    <meta name="description" content="Learn how to use any digital tool, AI tool, software, website, app, and browser extension. Step-by-step guides, tutorials, and solutions for 2500+ tools." />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <link rel="canonical" href="https://megatoolsx.com/" />
+
+    <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="alternate" type="application/rss+xml" title="MegatoolsX Blog" href="/rss.xml" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MegatoolsX - World's Largest Digital Tools Knowledge Platform</title>
-    <meta name="description" content="Learn how to use any digital tool, AI tool, software, website, app, and browser extension. Step-by-step guides, tutorials, and solutions for every tool." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  </head>
+
+    <!-- Preconnects -->
+    <link rel="preconnect" href="https://megatoolsx.com" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MegatoolsX" />
+    <meta property="og:title" content="MegatoolsX — World's Largest Digital Tools Knowledge Platform" />
+    <meta property="og:description" content="Learn how to use any digital tool, AI tool, software, website, app, and browser extension. Step-by-step guides, tutorials, and solutions for 2500+ tools." />
+    <meta property="og:url" content="https://megatoolsx.com/" />
+    <meta property="og:image" content="https://megatoolsx.com/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@megatoolsx" />
+    <meta name="twitter:title" content="MegatoolsX — World's Largest Digital Tools Knowledge Platform" />
+    <meta name="twitter:description" content="Learn how to use any digital tool, AI tool, software, website, app, and browser extension. Step-by-step guides, tutorials, and solutions for 2500+ tools." />
+    <meta name="twitter:image" content="https://megatoolsx.com/og-image.png" />
+
+    <!-- JSON-LD: Organization + WebSite (present in initial HTML so JS-less crawlers see it) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://megatoolsx.com/#organization",
+      "name": "MegatoolsX",
+      "url": "https://megatoolsx.com",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://megatoolsx.com/#logo",
+        "url": "https://megatoolsx.com/favicon.svg",
+        "width": 512,
+        "height": 512
+      },
+      "description": "Learn how to use any digital tool, AI tool, software, website, app, and browser extension. Step-by-step guides, tutorials, and solutions for 2500+ tools.",
+      "sameAs": ["https://x.com/megatoolsx", "https://github.com/megatoolsx"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://megatoolsx.com/#website",
+      "name": "MegatoolsX",
+      "url": "https://megatoolsx.com",
+      "publisher": { "@id": "https://megatoolsx.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": { "@type": "EntryPoint", "urlTemplate": "https://megatoolsx.com/tools?q={search_term_string}" },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

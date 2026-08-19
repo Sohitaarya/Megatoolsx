@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Cpu, Wifi, Bluetooth, Battery, Thermometer, Activity, Settings, HardDrive, Monitor, Smartphone, Zap, Globe, Bot, Server, Cloud, Shield } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function IotRoboticsTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -18,16 +19,7 @@ export function IotRoboticsTools({ tool }: { tool: CsvTool }) {
   if (name.includes('tracker') || name.includes('gps') || name.includes('location')) return <GPSTracker tool={tool} />
 
   return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-center"><Wifi className="w-6 h-6 text-cyan-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">IoT</div></div>
-        <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"><Cpu className="w-6 h-6 text-emerald-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Robotics</div></div>
-        <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center"><Battery className="w-6 h-6 text-blue-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Devices</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={Cpu} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🤖 ${tool.name} Results\n\nDevice status: Online\nCommand executed\nData transmitted\n✅ Operation complete`); setProcessing(false) }, 800) }} icon={Bot} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    <CapabilityTool tool={tool} />
   )
 }
 

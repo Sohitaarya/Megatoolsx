@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useToolsStore } from '@/store/toolsStore'
 import { ArrowRight, Bot, Palette, Code, Globe, Zap, BookOpen, Cloud, Smartphone, Briefcase, Users, Gamepad2, Cpu, Telescope, Atom } from 'lucide-react'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { collectionPageSchema, breadcrumbSchema } from '@/components/seo/schemas'
 
 const iconMap: Record<string, any> = {
   'Video/Audio Tools': Zap,
@@ -24,9 +26,25 @@ const iconMap: Record<string, any> = {
 
 export function Categories() {
   const { csvCategories, csvTools } = useToolsStore()
+  const description = `Browse ${csvTools.length}+ digital tool guides across ${csvCategories.length} categories. Find step-by-step tutorials, features, FAQs, and solutions for every tool.`
+  const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Categories', path: '/categories' }]
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <SEOHead
+        title="Browse All Categories"
+        description={description}
+        path="/categories"
+        jsonLd={[
+          collectionPageSchema({
+            title: 'Browse All Categories',
+            description,
+            path: '/categories',
+            items: csvCategories.map(c => ({ name: c.name, path: `/category/${c.slug}` })),
+          }),
+          breadcrumbSchema(breadcrumbs),
+        ]}
+      />
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-3xl font-bold text-white mb-2">Categories</h1>
         <p className="text-gray-400 mb-8">

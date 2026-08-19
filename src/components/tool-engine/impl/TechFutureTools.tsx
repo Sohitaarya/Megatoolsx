@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Sparkles, Cpu, Globe, Code, Shield, Zap, Box, Server, Cloud, Bot, Radio, Satellite, Wifi, Microscope } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function TechFutureTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -21,16 +22,7 @@ export function TechFutureTools({ tool }: { tool: CsvTool }) {
   if (name.includes('cyber') || name.includes('security')) return <CyberTool tool={tool} />
 
   return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-center"><Cpu className="w-6 h-6 text-violet-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Future</div></div>
-        <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-center"><Atom className="w-6 h-6 text-cyan-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Science</div></div>
-        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-center"><Globe className="w-6 h-6 text-amber-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Tech</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={Cpu} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🚀 ${tool.name} executed!\n\nAdvanced computation complete\nStatus: Successful\nFuturistic technology analysis ready\n\n✅ Results generated`); setProcessing(false) }, 1200) }} icon={Sparkles} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    <CapabilityTool tool={tool} />
   )
 }
 

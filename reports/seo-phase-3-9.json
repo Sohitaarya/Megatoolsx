@@ -1,0 +1,55 @@
+{
+  "buildTimestamp": "2026-08-11T18:03:06.455Z",
+  "site": "https://megatoolsx.com",
+  "technical": {
+    "indexability": "PASS",
+    "crawlEfficiency": "PASS"
+  },
+  "searchConsole": {
+    "status": "unavailable",
+    "reason": "credentials_not_configured"
+  },
+  "historyProvider": "not_configured",
+  "cwv": {
+    "status": "not_configured"
+  },
+  "http": [
+    {
+      "url": "https://megatoolsx.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://megatoolsx.com/tools",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://megatoolsx.com/category/design-creative",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://megatoolsx.com/collections",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://megatoolsx.com/tools/generative-heal-detector",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://megatoolsx.com/sitemap.xml",
+      "status": 200,
+      "contentType": "application/xml"
+    },
+    {
+      "url": "https://megatoolsx.com/robots.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8"
+    }
+  ],
+  "opportunities": [],
+  "alerts": []
+}

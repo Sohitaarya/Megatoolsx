@@ -1,0 +1,40 @@
+{
+  "report": {
+    "totalUrls": 20403,
+    "byClass": {
+      "static": 13,
+      "tool": 20000,
+      "category": 16,
+      "collection": 8,
+      "ai": 360,
+      "blog": 6,
+      "other": 0
+    }
+  },
+  "checks": {
+    "duplicateUrls": 0,
+    "queryUrlsInSitemap": 0,
+    "nonHttps": [],
+    "wrongHostname": 0,
+    "badToolPrefix": 0,
+    "toolPrefixMissing": 0,
+    "sitemapNon200": 0,
+    "canonicalRouteMismatch": 0,
+    "missingInboundTools": 0,
+    "orphanTools": 0,
+    "brokenInternalLinks": 0,
+    "sitemapXmlInvalid": 0,
+    "robotsAllowsTools": 0,
+    "robotsSitemapRef": 0,
+    "searchFilterUrlsIndexable": 0
+  },
+  "depth": {
+    "d0": 0,
+    "d1": 13,
+    "d2": 20390,
+    "d3": 0,
+    "d4": 0
+  },
+  "depth3Plus": 0,
+  "depth4Plus": 0
+}

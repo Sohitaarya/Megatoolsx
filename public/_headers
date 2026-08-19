@@ -1,33 +1,44 @@
-# Cloudflare Pages + Netlify — Security & Cache Headers
+# ─────────────────────────────────────────────────────────────
+# Cloudflare Pages — Security & Cache Headers (production)
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+# ─────────────────────────────────────────────────────────────
 
-# ─── HTML: no cache, strong security ───
-/index.html
+# ─── Security headers on ALL responses ───
 /*
   X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), accelerometer=(), gyroscope=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https:; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+
+# ─── HTML routes: no-cache (always revalidate on deploy) ───
+/*
   Cache-Control: public, max-age=0, must-revalidate
 
-# ─── Build assets: immutable cache ───
+# ─── Hashed build assets: immutable cache (fingerprinted filenames) ───
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-# ─── CSV data: short cache (regenerate on deploy) ───
+# ─── CSV data: short cache (regenerated on every deploy) ───
 /tools.csv
-  Cache-Control: public, max-age=3600
-
-# ─── Sitemap / robots: short cache ───
-/sitemap.xml
-/sitemap-static.xml
-/rss.xml
-/robots.txt
   Cache-Control: public, max-age=3600
   X-Content-Type-Options: nosniff
 
-# ─── Images / icons ───
+# ─── Sitemaps / robots / feeds / llms: short cache so changes propagate fast ───
+/sitemap*.xml
+/robots.txt
+/rss.xml
+/llms.txt
+/llms-full.txt
+  Cache-Control: public, max-age=3600
+  X-Content-Type-Options: nosniff
+
+# ─── Icons / manifest / static images ───
 /favicon.svg
 /icons.svg
+/og-image.png
 /manifest.json
   Cache-Control: public, max-age=86400

@@ -1,5 +1,6 @@
 import Papa from 'papaparse'
-import csvRaw from './tools.csv?raw'
+import { getToolDisplayName } from './designCreativeToolNames'
+import { cleanToolSlug } from '@/seo/indexing/toolSlug'
 
 export type ToolStatus = 'Present' | 'Generative' | 'Future'
 
@@ -10,6 +11,9 @@ export interface CsvTool {
   description: string
   seoKeywords: string
   metaDescription: string
+  /** Raw CSV slug (un-normalized) — kept for redirects from legacy URLs. */
+  rawSlug: string
+  /** Normalized slug — the single source used by routing/sitemap/links. */
   slug: string
 }
 
@@ -79,12 +83,37 @@ export const AI_TOOLS = [
   { name: 'Grok', slug: 'grok', category: 'AI Chatbots', description: 'xAI\'s conversational AI assistant' },
 ]
 
-// ─── CSV Parsing ────────────────────────────────────────────
-let parsedTools: CsvTool[] | null = null
+// ─── CSV Loading (fetched at runtime, NOT bundled into JS) ───
+let cachedTools: CsvTool[] | null = null
+let loadPromise: Promise<CsvTool[]> | null = null
 
-export function parseCsv(): CsvTool[] {
-  if (parsedTools) return parsedTools
+/**
+ * Loads and parses tools.csv once, then caches it.
+ * The CSV is fetched from the deployed site root (/tools.csv) instead of
+ * being embedded in the JS bundle — this removes ~700KB from the initial
+ * payload and dramatically improves LCP/TTFB.
+ */
+export function loadTools(): Promise<CsvTool[]> {
+  if (cachedTools) return Promise.resolve(cachedTools)
+  if (loadPromise) return loadPromise
 
+  loadPromise = fetch('/tools.csv', { cache: 'no-cache' })
+    .then(res => {
+      if (!res.ok) throw new Error(`Failed to load tools.csv: ${res.status}`)
+      return res.text()
+    })
+    .then(text => {
+      cachedTools = parseCsvText(text)
+      return cachedTools
+    })
+    .catch(err => {
+      loadPromise = null
+      throw err
+    })
+  return loadPromise
+}
+
+function parseCsvText(csvRaw: string): CsvTool[] {
   const result = Papa.parse(csvRaw, {
     header: true,
     skipEmptyLines: true,
@@ -102,10 +131,17 @@ export function parseCsv(): CsvTool[] {
     }
   })
 
-  parsedTools = (result.data as CsvTool[]).filter(t =>
+  const parsed = (result.data as CsvTool[]).filter(t =>
     t.name && t.slug && ACTIVE_STATUSES.includes(t.status as ToolStatus)
   )
-  return parsedTools
+  // Normalize every slug through the SINGLE slug pipeline (same as the sitemap),
+  // preserving the raw CSV slug for legacy redirects. CSV order = stable dedupe.
+  const used = new Set<string>()
+  return parsed.map(t => {
+    const rawSlug = (t.slug || '').trim()
+    const slug = cleanToolSlug(rawSlug, t.name, used)
+    return { ...t, rawSlug, slug }
+  })
 }
 
 // ─── Query Helpers ──────────────────────────────────────────
@@ -119,10 +155,31 @@ export function getCategories(tools: CsvTool[]): { name: string; slug: string; c
   return Array.from(map.entries())
     .map(([name, count]) => ({
       name,
-      slug: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+      slug: categorySlug(name),
       count,
     }))
     .sort((a, b) => b.count - a.count)
+}
+
+/** Deterministic URL slug for a category name, e.g. "Video/Audio Tools" → "video-audio-tools". */
+export function categorySlug(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}
+
+/** Human-friendly meta description for a tool, falling back to the CSV fields. */
+export function toolMetaDescription(tool: CsvTool): string {
+  const meta = tool.metaDescription?.trim()
+  if (meta && meta.length > 24) return meta
+  const desc = tool.description?.trim()
+  if (desc && desc.length > 40) return desc
+  const display = getToolDisplayName(tool)
+  return `Use ${display} online free. Step-by-step guide, features, FAQ, and troubleshooting for the ${tool.category.toLowerCase()} tool.`
+}
+
+/** SEO title for a tool page. Uses the repaired canonical name for Design/Creative. */
+export function toolTitle(tool: CsvTool): string {
+  const display = getToolDisplayName(tool)
+  return `${display} Guide: How to Use, Features & FAQ`
 }
 
 export function getToolsByCategory(tools: CsvTool[], category: string): CsvTool[] {

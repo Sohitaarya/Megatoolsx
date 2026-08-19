@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Code, Terminal, FileText, Database, GitBranch, Shield, Cloud, Server, Wifi, Bug, CheckCircle, Play, Download, Copy, RefreshCw, Globe, Zap, Layers, Box } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function DeveloperTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -29,17 +30,8 @@ export function DeveloperTools({ tool }: { tool: CsvTool }) {
   if (name.includes('babel')) return <BabelHelper tool={tool} />
   if (name.includes('npm') || name.includes('package')) return <NPMAnalyzer tool={tool} />
 
-  return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-center"><Code className="w-6 h-6 text-indigo-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Code</div></div>
-        <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"><Terminal className="w-6 h-6 text-emerald-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">CLI</div></div>
-        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-center"><Database className="w-6 h-6 text-amber-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">DB</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter input for ${tool.name}...`} label="Input" multiline icon={Code} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`💻 ${tool.name} executed!\n\nInput: ${input || 'Default'}\nStatus: Success\n\n✅ Operation completed\n⏱️ Time: ${(Math.random() * 0.5 + 0.1).toFixed(2)}s`); setProcessing(false) }, 800) }} icon={Play} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    return (
+    <CapabilityTool tool={tool} />
   )
 }
 

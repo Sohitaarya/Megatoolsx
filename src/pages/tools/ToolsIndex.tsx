@@ -1,19 +1,84 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { useToolsStore } from '@/store/toolsStore'
 import { motion } from 'framer-motion'
-import { Search, ExternalLink, Bookmark, Share2, ArrowRight } from 'lucide-react'
+import { Search, ExternalLink } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { StatusBadge } from '@/components/ui'
 import { getCsvCategoryColor } from '@/lib/utils'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { collectionPageSchema, breadcrumbSchema } from '@/components/seo/schemas'
+import { DiscoveryWidget } from '@/discovery'
 
 const SORT_OPTIONS = ['Alphabetical', 'Newest', 'Category'] as const
 
+/** Unique title/meta per collection route (/tools, /trending, /new-tools, /popular). */
+function routeMeta(pathname: string): { title: string; description: string; breadcrumbs: { name: string; path: string }[] } {
+  switch (pathname) {
+    case '/trending':
+      return {
+        title: 'Trending Tools',
+        description: 'Discover the trending digital tools right now. Step-by-step guides, tutorials, and solutions for the most popular tools being searched today.',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Trending Tools', path: '/trending' },
+        ],
+      }
+    case '/new-tools':
+      return {
+        title: 'New Tools',
+        description: 'Newly added digital tool guides. Explore the latest tools added to the MegatoolsX database with full tutorials, features, and FAQs.',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'New Tools', path: '/new-tools' },
+        ],
+      }
+    case '/popular':
+      return {
+        title: 'Popular Tools',
+        description: 'The most popular digital tools and software. Complete guides with how-to tutorials, troubleshooting, and expert tips for the tools everyone uses.',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Popular Tools', path: '/popular' },
+        ],
+      }
+    default:
+      return {
+        title: 'All Tools',
+        description: `Browse ${'tools'} — the complete MegatoolsX database of digital tool guides, tutorials, and solutions across every category.`,
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'All Tools', path: '/tools' },
+        ],
+      }
+  }
+}
+
 export function ToolsIndex() {
   const { csvTools, csvCategories, filterCsvTools } = useToolsStore()
-  const [search, setSearch] = useState('')
+  const { pathname } = useLocation()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [search, setSearch] = useState(searchParams.get('q') || '')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [sortBy, setSortBy] = useState('Alphabetical')
+
+  const meta = routeMeta(pathname)
+
+  // Reflect the search box in the URL (?q=) so the SearchAction schema target works,
+  // and initialize from the URL on first mount.
+  const isFirstRender = useRef(true)
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+    if (search.trim()) {
+      setSearchParams({ q: search.trim() }, { replace: true })
+    } else {
+      // Clear the query param when the user empties the box (replace current entry).
+      setSearchParams({}, { replace: true })
+    }
+  }, [search, setSearchParams])
 
   let displayed = filterCsvTools({ category: selectedCategory, sort: sortBy === 'Alphabetical' ? 'alphabetical' : undefined })
 
@@ -26,28 +91,50 @@ export function ToolsIndex() {
     )
   }
 
+  const listItems = displayed.slice(0, 500).map(t => ({ name: t.name, path: `/tools/${t.slug}` }))
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <SEOHead
+        title={meta.title}
+        description={meta.description}
+        path={pathname}
+        jsonLd={[
+          collectionPageSchema({ title: meta.title, description: meta.description, path: pathname, items: listItems }),
+          breadcrumbSchema(meta.breadcrumbs),
+        ]}
+      />
+
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-3xl font-bold text-white mb-2">Mega Tools</h1>
+        <h1 className="text-3xl font-bold text-white mb-2">{meta.title}</h1>
         <p className="text-gray-400 mb-8">
           Browse {csvTools.length}+ tools from the CSV database across {csvCategories.length} categories
         </p>
       </motion.div>
 
+      {/* Discovery Widgets */}
+      <div className="border-t border-white/10 mt-10 pt-10">
+        <DiscoveryWidget widget='trendingToday' limit={6} className="mt-10" />
+        <DiscoveryWidget widget='popularTools' limit={6} className="mt-10" />
+      </div>
+
       {/* Search & Filters */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
         <div className="flex-1 relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" aria-hidden="true" />
+          <label htmlFor="tools-search" className="sr-only">Search tools</label>
           <input
+            id="tools-search"
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search tools by name, category, or description..."
             className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
           />
         </div>
+        <label htmlFor="tools-category" className="sr-only">Filter by category</label>
         <select
+          id="tools-category"
           value={selectedCategory}
           onChange={e => setSelectedCategory(e.target.value)}
           className="px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
@@ -57,7 +144,9 @@ export function ToolsIndex() {
             <option key={cat.slug} value={cat.slug}>{cat.name} ({cat.count})</option>
           ))}
         </select>
+        <label htmlFor="tools-sort" className="sr-only">Sort tools</label>
         <select
+          id="tools-sort"
           value={sortBy}
           onChange={e => setSortBy(e.target.value)}
           className="px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50"

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { FileText, Scale, AlertTriangle, CheckCircle, Globe, Ban } from 'lucide-react'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { webPageSchema, breadcrumbSchema } from '@/components/seo/schemas'
 
 const sections = [
   { icon: FileText, title: 'Acceptance of Terms', content: 'By accessing and using MegatoolsX, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not use our services.' },
@@ -12,12 +13,20 @@ const sections = [
 ]
 
 export function Terms() {
+  const description = 'MegatoolsX terms of service — the terms and conditions for using our platform and content.'
+  const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Terms of Service', path: '/terms' }]
+
   return (
     <div>
-      <Helmet>
-        <title>Terms of Service | MegatoolsX</title>
-        <meta name="description" content="MegatoolsX terms of service - terms and conditions for using our platform." />
-      </Helmet>
+      <SEOHead
+        title="Terms of Service"
+        description={description}
+        path="/terms"
+        jsonLd={[
+          webPageSchema({ title: 'Terms of Service', description, path: '/terms', breadcrumbs }),
+          breadcrumbSchema(breadcrumbs),
+        ]}
+      />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">

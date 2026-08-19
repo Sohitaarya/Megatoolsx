@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { Shield, Lock, Eye, Server, Mail, Cookie } from 'lucide-react'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { webPageSchema, breadcrumbSchema } from '@/components/seo/schemas'
 
 const sections = [
   { icon: Shield, title: 'Information We Collect', content: 'We collect information you provide directly, such as your name and email address when you contact us or subscribe to our newsletter. We also collect anonymous usage data through cookies and analytics to improve our service.' },
@@ -12,12 +13,20 @@ const sections = [
 ]
 
 export function Privacy() {
+  const description = 'MegatoolsX privacy policy — how we collect, use, and protect your data when you use our website.'
+  const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Privacy Policy', path: '/privacy' }]
+
   return (
     <div>
-      <Helmet>
-        <title>Privacy Policy | MegatoolsX</title>
-        <meta name="description" content="MegatoolsX privacy policy - how we collect, use, and protect your data." />
-      </Helmet>
+      <SEOHead
+        title="Privacy Policy"
+        description={description}
+        path="/privacy"
+        jsonLd={[
+          webPageSchema({ title: 'Privacy Policy', description, path: '/privacy', breadcrumbs }),
+          breadcrumbSchema(breadcrumbs),
+        ]}
+      />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">

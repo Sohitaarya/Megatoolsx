@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Gamepad2, Star, Trophy, Zap, Crosshair, Brain, Eye, Swords, Skull, Sparkles, Users, Play } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function GamingTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -20,16 +21,7 @@ export function GamingTools({ tool }: { tool: CsvTool }) {
   if (name.includes('esport') || name.includes('e-sport')) return <EsportsTool tool={tool} />
 
   return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-center"><Gamepad2 className="w-6 h-6 text-cyan-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Games</div></div>
-        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-center"><Trophy className="w-6 h-6 text-amber-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Achievements</div></div>
-        <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-center"><Sword className="w-6 h-6 text-red-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Action</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={Gamepad2} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🎮 ${tool.name}\n\nStatus: Ready\nGaming data processed\n\n🏆 Game on!`); setProcessing(false) }, 800) }} icon={Play} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    <CapabilityTool tool={tool} />
   )
 }
 

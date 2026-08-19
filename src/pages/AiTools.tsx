@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useToolsStore } from '@/store/toolsStore'
-import { ArrowRight, ExternalLink, Sparkles, Star, TrendingUp } from 'lucide-react'
+import { ExternalLink, Sparkles } from 'lucide-react'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { collectionPageSchema, breadcrumbSchema } from '@/components/seo/schemas'
 
 const aiCategories = [
   { name: 'All AI Tools', slug: 'all' },
@@ -18,9 +20,26 @@ const aiCategories = [
 
 export function AiTools() {
   const { aiTools } = useToolsStore()
+  const description = 'Curated collection of the best AI-powered tools and platforms. Guides, how-to tutorials, downloads, pricing, and FAQs for ChatGPT, Claude, Gemini, Midjourney and more.'
+  const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'AI Tools', path: '/ai-tools' }]
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <SEOHead
+        title="AI Tools Collection"
+        description={description}
+        path="/ai-tools"
+        jsonLd={[
+          collectionPageSchema({
+            title: 'AI Tools Collection',
+            description,
+            path: '/ai-tools',
+            items: aiTools.map(t => ({ name: t.name, path: `/ai-tools/${t.slug}` })),
+          }),
+          breadcrumbSchema(breadcrumbs),
+        ]}
+      />
+
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <div className="flex items-center gap-3 mb-2">

@@ -1,20 +1,29 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
-import { Calendar, Clock, User, ArrowRight, Sparkles, BookOpen, Tag } from 'lucide-react'
+import { Calendar, Clock, User, ArrowRight, Sparkles, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { useToolsStore } from '@/store/toolsStore'
 import { blogPosts } from '@/data/blog'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { breadcrumbSchema, itemListSchema } from '@/components/seo/schemas'
 
 export function Blog() {
   const { csvTools } = useToolsStore()
+  const description = 'Latest guides, tutorials, and articles about digital tools, AI, and technology. Step-by-step how-tos and expert insights.'
+  const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog' }]
 
   return (
     <div>
-      <Helmet>
-        <title>Blog - Guides & Tutorials | MegatoolsX</title>
-        <meta name="description" content="Latest guides, tutorials, and articles about digital tools, AI, and technology." />
-      </Helmet>
+      <SEOHead
+        title="Blog — Guides & Tutorials"
+        description={description}
+        path="/blog"
+        type="article"
+        jsonLd={[
+          breadcrumbSchema(breadcrumbs),
+          itemListSchema(blogPosts.map(p => ({ name: p.title, path: `/blog/${p.slug}` }))),
+        ]}
+      />
 
       {/* Header */}
       <section className="py-16 lg:py-20">

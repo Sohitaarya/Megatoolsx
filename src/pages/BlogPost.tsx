@@ -1,24 +1,34 @@
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { Calendar, Clock, User, ArrowLeft, Tag, BookOpen, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { blogPosts } from '@/data/blog'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { blogPostingSchema, breadcrumbSchema } from '@/components/seo/schemas'
 
 export function BlogPost() {
   const { slug } = useParams()
+  const path = `/blog/${slug ?? ''}`
   const post = blogPosts.find(p => p.slug === slug)
 
   if (!post) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="text-center max-w-lg">
-          <div className="text-8xl font-bold gradient-text mb-4">404</div>
-          <h1 className="text-2xl font-bold text-white mb-4">Post Not Found</h1>
-          <p className="text-gray-400 mb-8">This article doesn't exist or has been moved.</p>
-          <Link to="/blog"><Button icon={ArrowLeft}>Back to Blog</Button></Link>
+      <>
+        <SEOHead
+          title="404 - Article Not Found"
+          description="This article doesn't exist or has been moved. Browse the latest MegatoolsX guides, tutorials, and tool articles."
+          path={path}
+          noIndex
+        />
+        <div className="min-h-screen flex items-center justify-center px-4">
+          <div className="text-center max-w-lg">
+            <div className="text-8xl font-bold gradient-text mb-4">404</div>
+            <h1 className="text-2xl font-bold text-white mb-4">Post Not Found</h1>
+            <p className="text-gray-400 mb-8">This article doesn't exist or has been moved.</p>
+            <Link to="/blog"><Button icon={ArrowLeft}>Back to Blog</Button></Link>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 
@@ -27,30 +37,32 @@ export function BlogPost() {
     .concat(blogPosts.filter(p => p.slug !== post.slug && p.category !== post.category))
     .slice(0, 3)
 
+  const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog' }, { name: post.title, path }]
+
   return (
     <div>
-      <Helmet>
-        <title>{post.title} | MegatoolsX Blog</title>
-        <meta name="description" content={post.excerpt} />
-        <link rel="canonical" href={`https://megatoolsx.com/blog/${post.slug}`} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://megatoolsx.com/blog/${post.slug}`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: post.title,
-            description: post.excerpt,
+      <SEOHead
+        title={post.title}
+        description={post.excerpt}
+        path={path}
+        type="article"
+        publishedTime={post.date}
+        modifiedTime={post.date}
+        jsonLd={[
+          blogPostingSchema({
+            title: post.title,
+            excerpt: post.excerpt,
             datePublished: post.date,
-            author: { '@type': 'Organization', name: 'MegatoolsX' },
-            publisher: { '@type': 'Organization', name: 'MegatoolsX' },
-            mainEntityOfPage: `https://megatoolsx.com/blog/${post.slug}`,
-          })}
-        </script>
-      </Helmet>
+            dateModified: post.date,
+            author: post.author,
+            image: post.image,
+            path,
+            category: post.category,
+            tags: post.tags,
+          }),
+          breadcrumbSchema(breadcrumbs),
+        ]}
+      />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         {/* Back */}

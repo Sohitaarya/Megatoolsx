@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Heart, Activity, Brain, Eye, Droplet, Thermometer, Pill, Apple, Dumbbell, Moon, Sun, Sparkles, FileText, BarChart, CheckCircle, Clock, AlertTriangle } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function HealthTechTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -23,17 +24,8 @@ export function HealthTechTools({ tool }: { tool: CsvTool }) {
   if (name.includes('vision') || name.includes('eye') || name.includes('sight')) return <VisionTest tool={tool} />
   if (name.includes('vaccine') || name.includes('vaccination')) return <VaccineTracker tool={tool} />
 
-  return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-center"><Heart className="w-6 h-6 text-red-400 mx-auto" /><div className="text-xs text-gray-500">Health</div></div>
-        <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"><Activity className="w-6 h-6 text-emerald-400 mx-auto" /><div className="text-xs text-gray-500">Fitness</div></div>
-        <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center"><Brain className="w-6 h-6 text-blue-400 mx-auto" /><div className="text-xs text-gray-500">Wellness</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={Activity} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🏥 ${tool.name}\n\nStatus: Completed\nInput: ${input || 'Default'}\n\n✅ Analysis ready\n📊 Health metrics processed`); setProcessing(false) }, 800) }} icon={Heart} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    return (
+    <CapabilityTool tool={tool} />
   )
 }
 

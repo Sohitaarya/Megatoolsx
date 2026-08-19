@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Sparkles, Download, Upload, Play, Music, Video, FileText, Image, Mic, Film, Headphones, Radio, Volume2, Repeat, Scissors, Sliders, Maximize, Minimize, Type, Copy, Check } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function VideoAudioTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -88,16 +89,8 @@ export function VideoAudioTools({ tool }: { tool: CsvTool }) {
     return <PodcastManager tool={tool} />
 
   // ─── Default ───
-  return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-2 gap-3 mb-4">
-        <div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-center"><Video className="w-8 h-8 text-indigo-400 mx-auto mb-1" /><div className="text-xs text-gray-500">Video</div></div>
-        <div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20 text-center"><Music className="w-8 h-8 text-pink-400 mx-auto mb-1" /><div className="text-xs text-gray-500">Audio</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} multiline icon={FileText} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🎵 ${tool.name} completed!\n\nInput: ${input || 'Default'}\nFormat: MP4/MP3\nQuality: High\n\nProcessing Time: ${(Math.random() * 3 + 1).toFixed(1)}s\nStatus: ✅ Done`); setProcessing(false) }, 1200) }} icon={Play} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    return (
+    <CapabilityTool tool={tool} />
   )
 }
 

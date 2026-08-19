@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BookOpen, GraduationCap, Brain, Target, Award, Pen, Calculator, BarChart, Globe, Sparkles, FileText, CheckCircle, HelpCircle, Clock, Users, Star, Book } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function EducationTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -22,17 +23,8 @@ export function EducationTools({ tool }: { tool: CsvTool }) {
   if (name.includes('writing') || name.includes('essay')) return <EssayGrader tool={tool} />
   if (name.includes('homework') || name.includes('assignment')) return <HomeworkHelper tool={tool} />
 
-  return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-center"><GraduationCap className="w-6 h-6 text-indigo-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Learn</div></div>
-        <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"><Brain className="w-6 h-6 text-emerald-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Practice</div></div>
-        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-center"><Award className="w-6 h-6 text-amber-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Assess</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter your ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={BookOpen} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`📚 ${tool.name}\n\nInput received: ${input || 'Standard'}\nCategory: Educational\n\n✅ Ready for review\n📊 Learning outcomes generated`); setProcessing(false) }, 800) }} icon={Sparkles} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    return (
+    <CapabilityTool tool={tool} />
   )
 }
 

@@ -1,0 +1,70 @@
+# MegatoolsX
+
+> The world's largest digital tools knowledge platform. Free step-by-step guides,
+> tutorials, features, FAQs, and troubleshooting solutions for 2,500+ digital tools,
+> AI tools, software, websites, apps, and browser extensions.
+
+This file is optimized for LLMs. For the complete, machine-readable tool catalog, see
+[llms-full.txt](/llms-full.txt) and the sitemap index at [/sitemap-index.xml](/sitemap-index.xml).
+
+## Navigation
+
+- [Home](https://megatoolsx.com/)
+- [All Tools](https://megatoolsx.com/tools)
+- [AI Tools Collection](https://megatoolsx.com/ai-tools)
+- [Categories](https://megatoolsx.com/categories)
+- [Blog / Guides](https://megatoolsx.com/blog)
+
+## What MegatoolsX Does
+
+Each tool page explains what the tool is, how to use it step-by-step, its key features,
+pricing overview, common problems and solutions, frequently asked questions, alternatives,
+and official resources. Tool pages follow this URL pattern:
+
+- `https://megatoolsx.com/tools/<slug>` — overview & how to use
+- `https://megatoolsx.com/tools/<slug>/how-to-use` — step-by-step guide
+- `https://megatoolsx.com/tools/<slug>/features` — key features
+- `https://megatoolsx.com/tools/<slug>/faq` — FAQ
+- `https://megatoolsx.com/tools/<slug>/download` — download links
+- `https://megatoolsx.com/ai-tools/<slug>` — featured AI tool guide
+
+## Popular AI Tools
+
+- [ChatGPT](https://megatoolsx.com/ai-tools/chatgpt)
+- [Claude](https://megatoolsx.com/ai-tools/claude)
+- [Gemini](https://megatoolsx.com/ai-tools/gemini)
+- [Copilot](https://megatoolsx.com/ai-tools/copilot)
+- [Midjourney](https://megatoolsx.com/ai-tools/midjourney)
+- [DALL-E](https://megatoolsx.com/ai-tools/dall-e)
+- [Notion AI](https://megatoolsx.com/ai-tools/notion-ai)
+- [Perplexity AI](https://megatoolsx.com/ai-tools/perplexity-ai)
+
+## Top Categories
+
+- [AI Tools](https://megatoolsx.com/category/ai-tools)
+- [Content Writing](https://megatoolsx.com/category/content-writing)
+- [Design/Creative](https://megatoolsx.com/category/design-creative)
+- [Developers/Coding](https://megatoolsx.com/category/developers-coding)
+- [SEO/Digital Marketing](https://megatoolsx.com/category/seo-digital-marketing)
+- [Business/Finance](https://megatoolsx.com/category/business-finance)
+- [Video/Audio Tools](https://megatoolsx.com/category/video-audio-tools)
+- [Technology/Future](https://megatoolsx.com/category/technology-future)
+
+## Blog
+
+- [The Ultimate Guide to AI Tools in 2026](https://megatoolsx.com/blog/ultimate-guide-ai-tools-2026)
+- [How to Master Any Digital Tool](https://megatoolsx.com/blog/master-any-digital-tool-framework)
+- [Top 10 Productivity Tools Every Professional Needs](https://megatoolsx.com/blog/top-10-productivity-tools-2026)
+- [Understanding AI: From Chatbots to Image Generation](https://megatoolsx.com/blog/understanding-ai-chatbots-image-generation)
+
+## Company
+
+- [About](https://megatoolsx.com/about)
+- [Contact](https://megatoolsx.com/contact)
+- [Privacy Policy](https://megatoolsx.com/privacy)
+- [Terms of Service](https://megatoolsx.com/terms)
+
+## Note on tool availability
+
+Tools marked with status *Working* are available online now; *New AI Tool* tools are live
+generative tools; *Coming Soon* tools are listed in the database but not yet released.

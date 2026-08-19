@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Globe, Cloud, Sun, Thermometer, Droplet, Wind, TreePine, Mountain, Leaf, Eye, BarChart, Sparkles, Activity } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function ClimateEnvironmentTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -22,16 +23,7 @@ export function ClimateEnvironmentTools({ tool }: { tool: CsvTool }) {
   if (name.includes('noise') || name.includes('sound') && name.includes('level')) return <NoiseMonitor tool={tool} />
 
   return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"><Globe className="w-6 h-6 text-emerald-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Climate</div></div>
-        <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center"><Cloud className="w-6 h-6 text-blue-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Weather</div></div>
-        <div className="p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-center"><TreePine className="w-6 h-6 text-green-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Nature</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={Globe} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🌍 ${tool.name} Results\n\nAnalysis complete\nInput: ${input || 'Global'}\nEnvironmental metrics processed\n✅ Results ready`); setProcessing(false) }, 1000) }} icon={Leaf} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    <CapabilityTool tool={tool} />
   )
 }
 

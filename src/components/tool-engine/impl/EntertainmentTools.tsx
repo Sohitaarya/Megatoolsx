@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Film, Music, Play, Star, Heart, ThumbsUp, Share2, Sparkles, BookOpen, Gamepad2, Clock, Radio, Globe, TrendingUp, Video } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function EntertainmentTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -19,16 +20,7 @@ export function EntertainmentTools({ tool }: { tool: CsvTool }) {
   if (name.includes('karaoke') || name.includes('sing')) return <KaraokeTool tool={tool} />
 
   return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-pink-500/10 border border-pink-500/20 text-center"><Film className="w-6 h-6 text-pink-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Movies</div></div>
-        <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-center"><Music className="w-6 h-6 text-purple-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Music</div></div>
-        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-center"><Gamepad2 className="w-6 h-6 text-amber-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Games</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={Play} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`🎬 ${tool.name} Results\n\nContent processed\nStatus: Ready\nEntertainment data generated\n✅ Enjoy!`); setProcessing(false) }, 800) }} icon={Star} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    <CapabilityTool tool={tool} />
   )
 }
 

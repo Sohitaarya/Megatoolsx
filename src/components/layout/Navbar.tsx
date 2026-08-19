@@ -12,6 +12,7 @@ const navLinks = [
   { label: 'Mega Tools', path: '/tools' },
   { label: 'AI Tools', path: '/ai-tools' },
   { label: 'Categories', path: '/categories' },
+  { label: 'Collections', path: '/collections' },
   { label: 'Trending', path: '/trending' },
   { label: 'New', path: '/new-tools' },
 ]
@@ -45,9 +46,9 @@ export function Navbar() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group">
+          <Link to="/" aria-label="MegatoolsX — home" className="flex items-center gap-2.5 group">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/25">
-              <Sparkles className="w-5 h-5 text-white" />
+              <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
             </div>
             <span className="text-xl font-bold text-white">
               Megatools<span className="text-indigo-400">X</span>
@@ -72,11 +73,12 @@ export function Navbar() {
             {/* Search Button */}
             <button
               onClick={openSearch}
+              aria-label="Search 2500+ tools"
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-400 text-sm hover:bg-white/10 hover:text-white transition-all"
             >
-              <Search className="w-4 h-4" />
+              <Search className="w-4 h-4" aria-hidden="true" />
               <span>Search 2500+ tools...</span>
-              <kbd className="hidden lg:inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] text-gray-500 font-mono">
+              <kbd className="hidden lg:inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] text-gray-500 font-mono" aria-hidden="true">
                 <Command className="w-2.5 h-2.5" />K
               </kbd>
             </button>
@@ -84,9 +86,10 @@ export function Navbar() {
             {/* Mobile Search */}
             <button
               onClick={openSearch}
+              aria-label="Search tools"
               className="sm:hidden p-2 text-gray-400 hover:text-white transition-colors"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-5 h-5" aria-hidden="true" />
             </button>
 
             {/* Utility Links (Compare, My Tools) */}
@@ -105,24 +108,30 @@ export function Navbar() {
             {/* Theme Toggle */}
             <button
               onClick={() => setTheme(isDarkMode ? 'light' : 'dark')}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               className="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/5 transition-all"
             >
-              {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {isDarkMode ? <Sun className="w-4 h-4" aria-hidden="true" /> : <Moon className="w-4 h-4" aria-hidden="true" />}
             </button>
 
             {/* Language Selector */}
             <div className="relative hidden sm:block" ref={langRef}>
               <button
                 onClick={() => setLangOpen(!langOpen)}
+                aria-expanded={langOpen}
+                aria-haspopup="menu"
+                aria-label="Select language"
                 className="flex items-center gap-1 px-2 py-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/5 transition-all text-sm"
               >
-                <Globe className="w-4 h-4" />
+                <Globe className="w-4 h-4" aria-hidden="true" />
                 <span className="hidden lg:inline">{LANGUAGES.find(l => l.code === currentLang)?.native}</span>
-                <ChevronDown className="w-3 h-3" />
+                <ChevronDown className="w-3 h-3" aria-hidden="true" />
               </button>
               <AnimatePresence>
                 {langOpen && (
                   <motion.div
+                    id="language-menu"
+                    role="menu"
                     initial={{ opacity: 0, y: -8, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -8, scale: 0.95 }}
@@ -131,6 +140,7 @@ export function Navbar() {
                     {LANGUAGES.map(lang => (
                       <button
                         key={lang.code}
+                        role="menuitem"
                         onClick={() => { setCurrentLang(lang.code); setLangOpen(false) }}
                         className={`w-full flex items-center gap-3 px-4 py-2 text-sm transition-colors ${
                           currentLang === lang.code ? 'text-indigo-400 bg-indigo-500/10' : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -149,9 +159,12 @@ export function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
               className="md:hidden p-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/5 transition-all"
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -161,6 +174,7 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}

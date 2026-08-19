@@ -1,0 +1,1 @@
+export { SvgOptimizerTool } from "./SvgOptimizerTool"

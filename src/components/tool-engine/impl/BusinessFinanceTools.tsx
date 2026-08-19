@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { DollarSign, TrendingUp, BarChart, PieChart, FileText, Calculator, Target, Shield, CreditCard, Wallet, Landmark, Receipt, Percent, PiggyBank, Briefcase, Globe, ArrowUpDown, Download, RefreshCw } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function BusinessFinanceTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -26,17 +27,8 @@ export function BusinessFinanceTools({ tool }: { tool: CsvTool }) {
   if (name.includes('budget') || name.includes('forecast')) return <BudgetForecast tool={tool} />
   if (name.includes('invoice') && name.includes('recurring')) return <RecurringInvoices tool={tool} />
 
-  return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"><DollarSign className="w-6 h-6 text-emerald-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Finance</div></div>
-        <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center"><BarChart className="w-6 h-6 text-blue-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Analytics</div></div>
-        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-center"><Calculator className="w-6 h-6 text-amber-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Calculator</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" icon={Calculator} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`💰 ${tool.name} Results\n\nCalculation complete\nInput: ${input || 'Default'}\n\n✅ Ready for review\n📊 Generated at: ${new Date().toLocaleString()}`); setProcessing(false) }, 800) }} icon={DollarSign} label={`Calculate with ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    return (
+    <CapabilityTool tool={tool} />
   )
 }
 

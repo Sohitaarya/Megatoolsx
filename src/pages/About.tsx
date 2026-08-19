@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Sparkles, Globe, BookOpen, Users, Shield, Zap, Heart, Award } from 'lucide-react'
-import { Helmet } from 'react-helmet-async'
 import { Button } from '@/components/ui'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { aboutPageSchema, breadcrumbSchema } from '@/components/seo/schemas'
 
 const stats = [
   { value: '2,500+', label: 'Mega Tools', icon: Zap },
@@ -19,12 +20,20 @@ const values = [
 ]
 
 export function About() {
+  const description = "Learn about MegatoolsX — the world's largest digital tools knowledge platform with 2500+ tool guides, AI tools, tutorials, and expert insights."
+  const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]
+
   return (
     <div>
-      <Helmet>
-        <title>About Us | MegatoolsX</title>
-        <meta name="description" content="Learn about MegatoolsX - the world's largest digital tools knowledge platform." />
-      </Helmet>
+      <SEOHead
+        title="About Us"
+        description={description}
+        path="/about"
+        jsonLd={[
+          aboutPageSchema({ title: 'About Us', description, path: '/about' }),
+          breadcrumbSchema(breadcrumbs),
+        ]}
+      />
 
       {/* Hero */}
       <section className="relative overflow-hidden py-20 lg:py-28">

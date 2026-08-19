@@ -1,0 +1,1094 @@
+{
+  "total": 179,
+  "suspicious": 63,
+  "duplicateNames": 0,
+  "duplicateSlugs": 0,
+  "familyDistribution": {
+    "logo": 1,
+    "thumbnail": 13,
+    "model-3d": 1,
+    "canvas-designer": 19,
+    "generative-art": 22,
+    "color": 23,
+    "gradient": 24,
+    "svg": 21,
+    "image-edit": 27,
+    "drawing": 28
+  },
+  "tools": [
+    {
+      "slug": "ai-logo-generator",
+      "oldName": "AI Logo Generator",
+      "canonicalName": "Logo Maker",
+      "family": "logo"
+    },
+    {
+      "slug": "youtube-thumbnail-generator",
+      "oldName": "YouTube Thumbnail Generator",
+      "canonicalName": "Podcast Thumbnail Maker III",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "3d-model-generator",
+      "oldName": "3D Model Generator",
+      "canonicalName": "3D Model Generator",
+      "family": "model-3d"
+    },
+    {
+      "slug": "poster-generator",
+      "oldName": "Poster Generator",
+      "canonicalName": "Festival Poster Maker II",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "nft-art-creator",
+      "oldName": "NFT Art Creator",
+      "canonicalName": "Generative Art Studio Pro",
+      "family": "generative-art"
+    },
+    {
+      "slug": "nextgen-videtool-aligner",
+      "oldName": "NextGen VideTool Aligner",
+      "canonicalName": "Video Thumbnail Editor",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "smart-ente-converter",
+      "oldName": "Smart Ente Converter",
+      "canonicalName": "Procedural Pattern Maker Pro",
+      "family": "generative-art"
+    },
+    {
+      "slug": "ai-heal-bot-pro",
+      "oldName": "AI Heal Bot Pro",
+      "canonicalName": "Color Picker",
+      "family": "color"
+    },
+    {
+      "slug": "clim-builder-analyzer",
+      "oldName": "Clim Builder Analyzer",
+      "canonicalName": "Gradient Background Generator",
+      "family": "gradient"
+    },
+    {
+      "slug": "virtual-tech-studio",
+      "oldName": "Virtual Tech Studio",
+      "canonicalName": "SVG Optimizer Studio",
+      "family": "svg"
+    },
+    {
+      "slug": "contwrit-detector-analyzer",
+      "oldName": "ContWrit Detector Analyzer",
+      "canonicalName": "Image Contrast Tool",
+      "family": "image-edit"
+    },
+    {
+      "slug": "auto-clim-composer-builder",
+      "oldName": "Auto Clim Composer Builder",
+      "canonicalName": "Gradient Generator",
+      "family": "gradient"
+    },
+    {
+      "slug": "auto-seo-mark-bot-builder",
+      "oldName": "Auto Seo/Mark Bot Builder",
+      "canonicalName": "Image Converter",
+      "family": "image-edit"
+    },
+    {
+      "slug": "ente-editor-ai",
+      "oldName": "Ente Editor AI",
+      "canonicalName": "Generative Art Canvas",
+      "family": "generative-art"
+    },
+    {
+      "slug": "cloud-tech-builder-service",
+      "oldName": "Cloud Tech Builder Service",
+      "canonicalName": "SVG Optimizer II",
+      "family": "svg"
+    },
+    {
+      "slug": "nextgen-iot-analyzer",
+      "oldName": "NextGen Iot/ Analyzer",
+      "canonicalName": "Digital Drawing Canvas Plus",
+      "family": "drawing"
+    },
+    {
+      "slug": "nextgen-deve-composer",
+      "oldName": "NextGen Deve Composer",
+      "canonicalName": "SVG Color Editor III",
+      "family": "svg"
+    },
+    {
+      "slug": "genescie-toolkit-ai",
+      "oldName": "GeneScie Toolkit AI",
+      "canonicalName": "Online Drawing Tool III",
+      "family": "drawing"
+    },
+    {
+      "slug": "auto-desi-creator-builder",
+      "oldName": "Auto Desi Creator Builder",
+      "canonicalName": "Poster Maker",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "generative-gami-planner",
+      "oldName": "Generative Gami Planner",
+      "canonicalName": "NFT Art Creator III",
+      "family": "generative-art"
+    },
+    {
+      "slug": "nextgen-busi-aligner",
+      "oldName": "NextGen Busi Aligner",
+      "canonicalName": "Color Picker III",
+      "family": "color"
+    },
+    {
+      "slug": "instant-contwrit-builder",
+      "oldName": "Instant ContWrit Builder",
+      "canonicalName": "Image Rotator II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "generative-contwrit-mixer",
+      "oldName": "Generative ContWrit Mixer",
+      "canonicalName": "Image Cropper II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "educ-tracker-studio",
+      "oldName": "Educ Tracker Studio",
+      "canonicalName": "Gradient Color Stops Maker II",
+      "family": "gradient"
+    },
+    {
+      "slug": "gami-tracker-assistant",
+      "oldName": "Gami Tracker Assistant",
+      "canonicalName": "Generative Art Studio III",
+      "family": "generative-art"
+    },
+    {
+      "slug": "busi-mapper-analyzer",
+      "oldName": "Busi Mapper Analyzer",
+      "canonicalName": "Contrast Checker",
+      "family": "color"
+    },
+    {
+      "slug": "generative-busi-enhancer",
+      "oldName": "Generative Busi Enhancer",
+      "canonicalName": "Random Color Generator",
+      "family": "color"
+    },
+    {
+      "slug": "cloud-genescie-manager-service",
+      "oldName": "Cloud GeneScie Manager Service",
+      "canonicalName": "Digital Drawing Canvas",
+      "family": "drawing"
+    },
+    {
+      "slug": "ente-finder-assistant",
+      "oldName": "Ente Finder Assistant",
+      "canonicalName": "Generative Art Studio II",
+      "family": "generative-art"
+    },
+    {
+      "slug": "educ-simulator-x",
+      "oldName": "Educ Simulator X",
+      "canonicalName": "CSS Gradient Generator II",
+      "family": "gradient"
+    },
+    {
+      "slug": "cloud-spac-composer-service",
+      "oldName": "Cloud Spac Composer Service",
+      "canonicalName": "Gradient Generator II",
+      "family": "gradient"
+    },
+    {
+      "slug": "cloud-pers-synth-service",
+      "oldName": "Cloud Pers Synth Service",
+      "canonicalName": "Event Poster Maker",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "generative-heal-detector",
+      "oldName": "Generative Heal Detector",
+      "canonicalName": "Color Picker II",
+      "family": "color"
+    },
+    {
+      "slug": "clim-aligner-assistant",
+      "oldName": "Clim Aligner Assistant",
+      "canonicalName": "Radial Gradient Maker",
+      "family": "gradient"
+    },
+    {
+      "slug": "contwrit-dashboard-assistant",
+      "oldName": "ContWrit Dashboard Assistant",
+      "canonicalName": "Image Brightness Editor",
+      "family": "image-edit"
+    },
+    {
+      "slug": "seo-mark-converter-ai",
+      "oldName": "Seo/Mark Converter AI",
+      "canonicalName": "Image Sharpener II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "videtool-tracker-assistant",
+      "oldName": "VideTool Tracker Assistant",
+      "canonicalName": "Video Thumbnail Editor II",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "pers-bot-2-0",
+      "oldName": "Pers Bot 2.0",
+      "canonicalName": "Social Post Designer II",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "generative-clim-converter",
+      "oldName": "Generative Clim Converter",
+      "canonicalName": "Gradient Generator III",
+      "family": "gradient"
+    },
+    {
+      "slug": "nextgen-videtool-builder",
+      "oldName": "NextGen VideTool Builder",
+      "canonicalName": "YouTube Thumbnail Maker II",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "nextgen-busi-editor",
+      "oldName": "NextGen Busi Editor",
+      "canonicalName": "Color Converter III",
+      "family": "color"
+    },
+    {
+      "slug": "auto-videtool-builder-builder",
+      "oldName": "Auto VideTool Builder Builder",
+      "canonicalName": "YouTube Thumbnail Maker",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "cloud-contwrit-toolkit-service",
+      "oldName": "Cloud ContWrit Toolkit Service",
+      "canonicalName": "Image Sharpener",
+      "family": "image-edit"
+    },
+    {
+      "slug": "virtual-genescie-dashboard",
+      "oldName": "Virtual GeneScie Dashboard",
+      "canonicalName": "Online Drawing Tool Express",
+      "family": "drawing"
+    },
+    {
+      "slug": "desi-lab-ai",
+      "oldName": "Desi Lab AI",
+      "canonicalName": "Promotional Poster Maker",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "desi-editor-studio",
+      "oldName": "Desi Editor Studio",
+      "canonicalName": "Business Poster Maker",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "ai-tech-mixer-pro",
+      "oldName": "AI Tech Mixer Pro",
+      "canonicalName": "SVG Optimizer",
+      "family": "svg"
+    },
+    {
+      "slug": "tech-assistant-assistant",
+      "oldName": "Tech Assistant Assistant",
+      "canonicalName": "SVG Optimizer Pro",
+      "family": "svg"
+    },
+    {
+      "slug": "desi-synth-analyzer",
+      "oldName": "Desi Synth Analyzer",
+      "canonicalName": "Quote Poster Maker",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "videtool-detector-analyzer",
+      "oldName": "VideTool Detector Analyzer",
+      "canonicalName": "Video Thumbnail Maker II",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "tech-synth-analyzer",
+      "oldName": "Tech Synth Analyzer",
+      "canonicalName": "SVG Path Viewer Pro",
+      "family": "svg"
+    },
+    {
+      "slug": "virtual-videtool-synth",
+      "oldName": "Virtual VideTool Synth",
+      "canonicalName": "Video Thumbnail Maker III",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "tech-lab-x",
+      "oldName": "Tech Lab X",
+      "canonicalName": "SVG Editor Pro",
+      "family": "svg"
+    },
+    {
+      "slug": "auto-deve-toolkit-builder",
+      "oldName": "Auto Deve Toolkit Builder",
+      "canonicalName": "SVG Viewer",
+      "family": "svg"
+    },
+    {
+      "slug": "instant-seo-mark-creator",
+      "oldName": "Instant Seo/Mark Creator",
+      "canonicalName": "Image Converter II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "contwrit-toolkit-analyzer",
+      "oldName": "ContWrit Toolkit Analyzer",
+      "canonicalName": "Image Optimizer II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "nextgen-busi-assistant",
+      "oldName": "NextGen Busi Assistant",
+      "canonicalName": "Color Palette Generator III",
+      "family": "color"
+    },
+    {
+      "slug": "contwrit-composer-ai",
+      "oldName": "ContWrit Composer AI",
+      "canonicalName": "Image Blur Tool",
+      "family": "image-edit"
+    },
+    {
+      "slug": "iot-toolkit-assistant",
+      "oldName": "Iot/ Toolkit Assistant",
+      "canonicalName": "Digital Drawing Canvas Studio",
+      "family": "drawing"
+    },
+    {
+      "slug": "virtual-busi-converter",
+      "oldName": "Virtual Busi Converter",
+      "canonicalName": "Color Tints Generator III",
+      "family": "color"
+    },
+    {
+      "slug": "iot-dashboard-ai",
+      "oldName": "Iot/ Dashboard AI",
+      "canonicalName": "Online Drawing Tool Pro",
+      "family": "drawing"
+    },
+    {
+      "slug": "smart-seo-mark-optimizer",
+      "oldName": "Smart Seo/Mark Optimizer",
+      "canonicalName": "Image Contrast Tool II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "generative-clim-mixer",
+      "oldName": "Generative Clim Mixer",
+      "canonicalName": "Linear Gradient Maker III",
+      "family": "gradient"
+    },
+    {
+      "slug": "ente-aligner-assistant",
+      "oldName": "Ente Aligner Assistant",
+      "canonicalName": "Abstract Art Generator",
+      "family": "generative-art"
+    },
+    {
+      "slug": "smart-deve-manager",
+      "oldName": "Smart Deve Manager",
+      "canonicalName": "SVG Path Viewer III",
+      "family": "svg"
+    },
+    {
+      "slug": "generative-gami-analyzer",
+      "oldName": "Generative Gami Analyzer",
+      "canonicalName": "Procedural Pattern Maker III",
+      "family": "generative-art"
+    },
+    {
+      "slug": "auto-tech-composer-builder",
+      "oldName": "Auto Tech Composer Builder",
+      "canonicalName": "SVG Editor",
+      "family": "svg"
+    },
+    {
+      "slug": "auto-tech-dashboard-builder",
+      "oldName": "Auto Tech Dashboard Builder",
+      "canonicalName": "SVG Color Editor",
+      "family": "svg"
+    },
+    {
+      "slug": "generative-busi-synth",
+      "oldName": "Generative Busi Synth",
+      "canonicalName": "Color Mixer",
+      "family": "color"
+    },
+    {
+      "slug": "contwrit-manager-analyzer",
+      "oldName": "ContWrit Manager Analyzer",
+      "canonicalName": "Image Grayscale Converter",
+      "family": "image-edit"
+    },
+    {
+      "slug": "iot-toolkit-x",
+      "oldName": "Iot/ Toolkit X",
+      "canonicalName": "Pixel Drawing Tool Studio",
+      "family": "drawing"
+    },
+    {
+      "slug": "instant-spac-builder",
+      "oldName": "Instant Spac Builder",
+      "canonicalName": "CSS Gradient Generator III",
+      "family": "gradient"
+    },
+    {
+      "slug": "nextgen-heal-studio",
+      "oldName": "NextGen Heal Studio",
+      "canonicalName": "Color Shades Generator III",
+      "family": "color"
+    },
+    {
+      "slug": "cloud-heal-aligner-service",
+      "oldName": "Cloud Heal Aligner Service",
+      "canonicalName": "Color Tints Generator",
+      "family": "color"
+    },
+    {
+      "slug": "cloud-gami-dashboard-service",
+      "oldName": "Cloud Gami Dashboard Service",
+      "canonicalName": "Generative Art Studio",
+      "family": "generative-art"
+    },
+    {
+      "slug": "nextgen-heal-optimizer",
+      "oldName": "NextGen Heal Optimizer",
+      "canonicalName": "Contrast Checker III",
+      "family": "color"
+    },
+    {
+      "slug": "desi-mixer-2-0",
+      "oldName": "Desi Mixer 2.0",
+      "canonicalName": "Festival Poster Maker",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "seo-mark-analyzer-2-0",
+      "oldName": "Seo/Mark Analyzer 2.0",
+      "canonicalName": "Image Filter Editor II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "ai-heal-optimizer-pro",
+      "oldName": "AI Heal Optimizer Pro",
+      "canonicalName": "Color Palette Generator",
+      "family": "color"
+    },
+    {
+      "slug": "iot-tracker-ai",
+      "oldName": "Iot/ Tracker AI",
+      "canonicalName": "Online Drawing Tool Plus",
+      "family": "drawing"
+    },
+    {
+      "slug": "educ-composer-assistant",
+      "oldName": "Educ Composer Assistant",
+      "canonicalName": "Radial Gradient Maker II",
+      "family": "gradient"
+    },
+    {
+      "slug": "instant-iot-assistant",
+      "oldName": "Instant Iot/ Assistant",
+      "canonicalName": "Sketch Pad III",
+      "family": "drawing"
+    },
+    {
+      "slug": "nextgen-educ-planner",
+      "oldName": "NextGen Educ Planner",
+      "canonicalName": "Gradient Generator Pro",
+      "family": "gradient"
+    },
+    {
+      "slug": "contwrit-enhancer-assistant",
+      "oldName": "ContWrit Enhancer Assistant",
+      "canonicalName": "Image Saturation Editor",
+      "family": "image-edit"
+    },
+    {
+      "slug": "generative-deve-mapper",
+      "oldName": "Generative Deve Mapper",
+      "canonicalName": "SVG Optimizer III",
+      "family": "svg"
+    },
+    {
+      "slug": "auto-contwrit-finder-builder",
+      "oldName": "Auto ContWrit Finder Builder",
+      "canonicalName": "Image Flipper",
+      "family": "image-edit"
+    },
+    {
+      "slug": "heal-manager-2-0",
+      "oldName": "Heal Manager 2.0",
+      "canonicalName": "Color Converter II",
+      "family": "color"
+    },
+    {
+      "slug": "ente-mapper-assistant",
+      "oldName": "Ente Mapper Assistant",
+      "canonicalName": "Procedural Pattern Maker II",
+      "family": "generative-art"
+    },
+    {
+      "slug": "smart-pers-manager",
+      "oldName": "Smart Pers Manager",
+      "canonicalName": "Education Poster Maker II",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "clim-detector-2-0",
+      "oldName": "Clim Detector 2.0",
+      "canonicalName": "CSS Gradient Generator",
+      "family": "gradient"
+    },
+    {
+      "slug": "nextgen-genescie-mapper",
+      "oldName": "NextGen GeneScie Mapper",
+      "canonicalName": "Sketch Pad Plus",
+      "family": "drawing"
+    },
+    {
+      "slug": "desi-enhancer-analyzer",
+      "oldName": "Desi Enhancer Analyzer",
+      "canonicalName": "Sale Poster Maker",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "cloud-deve-optimizer-service",
+      "oldName": "Cloud Deve Optimizer Service",
+      "canonicalName": "SVG Path Viewer",
+      "family": "svg"
+    },
+    {
+      "slug": "generative-iot-editor",
+      "oldName": "Generative Iot/ Editor",
+      "canonicalName": "Pixel Drawing Tool",
+      "family": "drawing"
+    },
+    {
+      "slug": "pers-mixer-studio",
+      "oldName": "Pers Mixer Studio",
+      "canonicalName": "Sale Poster Maker II",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "ente-analyzer-studio",
+      "oldName": "Ente Analyzer Studio",
+      "canonicalName": "NFT Art Creator",
+      "family": "generative-art"
+    },
+    {
+      "slug": "virtual-genescie-detector",
+      "oldName": "Virtual GeneScie Detector",
+      "canonicalName": "Sketch Pad Express",
+      "family": "drawing"
+    },
+    {
+      "slug": "iot-mixer-2-0",
+      "oldName": "Iot/ Mixer 2.0",
+      "canonicalName": "Online Drawing Tool Studio",
+      "family": "drawing"
+    },
+    {
+      "slug": "generative-heal-tracker",
+      "oldName": "Generative Heal Tracker",
+      "canonicalName": "Color Palette Generator II",
+      "family": "color"
+    },
+    {
+      "slug": "nextgen-spac-planner",
+      "oldName": "NextGen Spac Planner",
+      "canonicalName": "Linear Gradient Maker Pro",
+      "family": "gradient"
+    },
+    {
+      "slug": "cloud-educ-tracker-service",
+      "oldName": "Cloud Educ Tracker Service",
+      "canonicalName": "Gradient Color Stops Maker",
+      "family": "gradient"
+    },
+    {
+      "slug": "gami-mapper-assistant",
+      "oldName": "Gami Mapper Assistant",
+      "canonicalName": "Generative Art Canvas II",
+      "family": "generative-art"
+    },
+    {
+      "slug": "smart-ente-studio",
+      "oldName": "Smart Ente Studio",
+      "canonicalName": "Abstract Art Generator Pro",
+      "family": "generative-art"
+    },
+    {
+      "slug": "ai-contwrit-toolkit-pro",
+      "oldName": "AI ContWrit Toolkit Pro",
+      "canonicalName": "Image Compressor",
+      "family": "image-edit"
+    },
+    {
+      "slug": "virtual-gami-finder",
+      "oldName": "Virtual Gami Finder",
+      "canonicalName": "Generative Art Studio Studio",
+      "family": "generative-art"
+    },
+    {
+      "slug": "virtual-seo-mark-mixer",
+      "oldName": "Virtual Seo/Mark Mixer",
+      "canonicalName": "Image Saturation Editor II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "instant-videtool-dashboard",
+      "oldName": "Instant VideTool Dashboard",
+      "canonicalName": "Blog Thumbnail Maker",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "seo-mark-editor-2-0",
+      "oldName": "Seo/Mark Editor 2.0",
+      "canonicalName": "Image Blur Tool II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "virtual-genescie-analyzer",
+      "oldName": "Virtual GeneScie Analyzer",
+      "canonicalName": "Pixel Drawing Tool Plus",
+      "family": "drawing"
+    },
+    {
+      "slug": "instant-contwrit-planner",
+      "oldName": "Instant ContWrit Planner",
+      "canonicalName": "Image Flipper II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "virtual-busi-creator",
+      "oldName": "Virtual Busi Creator",
+      "canonicalName": "Random Color Generator III",
+      "family": "color"
+    },
+    {
+      "slug": "ai-iot-enhancer-pro",
+      "oldName": "AI Iot/ Enhancer Pro",
+      "canonicalName": "Online Drawing Tool",
+      "family": "drawing"
+    },
+    {
+      "slug": "instant-deve-dashboard",
+      "oldName": "Instant Deve Dashboard",
+      "canonicalName": "SVG Editor III",
+      "family": "svg"
+    },
+    {
+      "slug": "generative-educ-detector",
+      "oldName": "Generative Educ Detector",
+      "canonicalName": "Radial Gradient Maker III",
+      "family": "gradient"
+    },
+    {
+      "slug": "generative-deve-bot",
+      "oldName": "Generative Deve Bot",
+      "canonicalName": "SVG Path Viewer II",
+      "family": "svg"
+    },
+    {
+      "slug": "videtool-tracker-analyzer",
+      "oldName": "VideTool Tracker Analyzer",
+      "canonicalName": "Blog Thumbnail Maker II",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "generative-tech-simulator",
+      "oldName": "Generative Tech Simulator",
+      "canonicalName": "SVG Viewer III",
+      "family": "svg"
+    },
+    {
+      "slug": "pers-lab-analyzer",
+      "oldName": "Pers Lab Analyzer",
+      "canonicalName": "Business Poster Maker II",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "deve-toolkit-2-0",
+      "oldName": "Deve Toolkit 2.0",
+      "canonicalName": "SVG Editor II",
+      "family": "svg"
+    },
+    {
+      "slug": "heal-tracker-2-0",
+      "oldName": "Heal Tracker 2.0",
+      "canonicalName": "Color Mixer II",
+      "family": "color"
+    },
+    {
+      "slug": "gami-editor-analyzer",
+      "oldName": "Gami Editor Analyzer",
+      "canonicalName": "NFT Art Creator II",
+      "family": "generative-art"
+    },
+    {
+      "slug": "heal-planner-ai",
+      "oldName": "Heal Planner AI",
+      "canonicalName": "Color Tints Generator II",
+      "family": "color"
+    },
+    {
+      "slug": "instant-spac-converter",
+      "oldName": "Instant Spac Converter",
+      "canonicalName": "Gradient Color Stops Maker III",
+      "family": "gradient"
+    },
+    {
+      "slug": "virtual-iot-manager",
+      "oldName": "Virtual Iot/ Manager",
+      "canonicalName": "Pixel Drawing Tool Express",
+      "family": "drawing"
+    },
+    {
+      "slug": "virtual-videtool-creator",
+      "oldName": "Virtual VideTool Creator",
+      "canonicalName": "YouTube Thumbnail Maker III",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "iot-dashboard-analyzer",
+      "oldName": "Iot/ Dashboard Analyzer",
+      "canonicalName": "Sketch Pad Pro",
+      "family": "drawing"
+    },
+    {
+      "slug": "iot-finder-studio",
+      "oldName": "Iot/ Finder Studio",
+      "canonicalName": "Pixel Drawing Tool Pro",
+      "family": "drawing"
+    },
+    {
+      "slug": "ai-seo-mark-bot-pro",
+      "oldName": "AI Seo/Mark Bot Pro",
+      "canonicalName": "Image Optimizer",
+      "family": "image-edit"
+    },
+    {
+      "slug": "instant-gami-assistant",
+      "oldName": "Instant Gami Assistant",
+      "canonicalName": "Generative Art Canvas III",
+      "family": "generative-art"
+    },
+    {
+      "slug": "pers-studio-assistant",
+      "oldName": "Pers Studio Assistant",
+      "canonicalName": "Promotional Poster Maker II",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "contwrit-mixer-ai",
+      "oldName": "ContWrit Mixer AI",
+      "canonicalName": "Image Compressor II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "generative-contwrit-composer",
+      "oldName": "Generative ContWrit Composer",
+      "canonicalName": "Image Resizer II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "heal-mixer-x",
+      "oldName": "Heal Mixer X",
+      "canonicalName": "Color Shades Generator II",
+      "family": "color"
+    },
+    {
+      "slug": "auto-videtool-editor-builder",
+      "oldName": "Auto VideTool Editor Builder",
+      "canonicalName": "Podcast Thumbnail Maker",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "generative-gami-builder",
+      "oldName": "Generative Gami Builder",
+      "canonicalName": "Abstract Art Generator III",
+      "family": "generative-art"
+    },
+    {
+      "slug": "instant-clim-optimizer",
+      "oldName": "Instant Clim Optimizer",
+      "canonicalName": "Gradient Background Generator III",
+      "family": "gradient"
+    },
+    {
+      "slug": "genescie-synth-studio",
+      "oldName": "GeneScie Synth Studio",
+      "canonicalName": "Pixel Drawing Tool II",
+      "family": "drawing"
+    },
+    {
+      "slug": "virtual-gami-converter",
+      "oldName": "Virtual Gami Converter",
+      "canonicalName": "NFT Art Creator Pro",
+      "family": "generative-art"
+    },
+    {
+      "slug": "videtool-mixer-2-0",
+      "oldName": "VideTool Mixer 2.0",
+      "canonicalName": "Podcast Thumbnail Maker II",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "heal-mixer-ai",
+      "oldName": "Heal Mixer AI",
+      "canonicalName": "Contrast Checker II",
+      "family": "color"
+    },
+    {
+      "slug": "genescie-composer-x",
+      "oldName": "GeneScie Composer X",
+      "canonicalName": "Digital Drawing Canvas II",
+      "family": "drawing"
+    },
+    {
+      "slug": "pers-generator-analyzer",
+      "oldName": "Pers Generator Analyzer",
+      "canonicalName": "Event Poster Maker II",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "iot-synth-2-0",
+      "oldName": "Iot/ Synth 2.0",
+      "canonicalName": "Sketch Pad Studio",
+      "family": "drawing"
+    },
+    {
+      "slug": "spac-converter-assistant",
+      "oldName": "Spac Converter Assistant",
+      "canonicalName": "Gradient Background Generator Pro",
+      "family": "gradient"
+    },
+    {
+      "slug": "educ-analyzer-studio",
+      "oldName": "Educ Analyzer Studio",
+      "canonicalName": "Linear Gradient Maker II",
+      "family": "gradient"
+    },
+    {
+      "slug": "spac-tracker-x",
+      "oldName": "Spac Tracker X",
+      "canonicalName": "Gradient Color Stops Maker Pro",
+      "family": "gradient"
+    },
+    {
+      "slug": "iot-creator-analyzer",
+      "oldName": "Iot/ Creator Analyzer",
+      "canonicalName": "Pixel Drawing Tool III",
+      "family": "drawing"
+    },
+    {
+      "slug": "ai-iot-toolkit-pro",
+      "oldName": "AI Iot/ Toolkit Pro",
+      "canonicalName": "Sketch Pad",
+      "family": "drawing"
+    },
+    {
+      "slug": "cloud-gami-tracker-service",
+      "oldName": "Cloud Gami Tracker Service",
+      "canonicalName": "Procedural Pattern Maker",
+      "family": "generative-art"
+    },
+    {
+      "slug": "auto-educ-converter-builder",
+      "oldName": "Auto Educ Converter Builder",
+      "canonicalName": "Linear Gradient Maker",
+      "family": "gradient"
+    },
+    {
+      "slug": "tech-optimizer-studio",
+      "oldName": "Tech Optimizer Studio",
+      "canonicalName": "SVG Color Editor Pro",
+      "family": "svg"
+    },
+    {
+      "slug": "generative-deve-aligner",
+      "oldName": "Generative Deve Aligner",
+      "canonicalName": "SVG Color Editor II",
+      "family": "svg"
+    },
+    {
+      "slug": "gami-creator-analyzer",
+      "oldName": "Gami Creator Analyzer",
+      "canonicalName": "Abstract Art Generator II",
+      "family": "generative-art"
+    },
+    {
+      "slug": "deve-detector-studio",
+      "oldName": "Deve Detector Studio",
+      "canonicalName": "SVG Viewer II",
+      "family": "svg"
+    },
+    {
+      "slug": "instant-iot-lab",
+      "oldName": "Instant Iot/ Lab",
+      "canonicalName": "Digital Drawing Canvas III",
+      "family": "drawing"
+    },
+    {
+      "slug": "pers-assistant-studio",
+      "oldName": "Pers Assistant Studio",
+      "canonicalName": "Banner Maker II",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "auto-videtool-creator-builder",
+      "oldName": "Auto VideTool Creator Builder",
+      "canonicalName": "Video Thumbnail Maker",
+      "family": "thumbnail"
+    },
+    {
+      "slug": "auto-desi-detector-builder",
+      "oldName": "Auto Desi Detector Builder",
+      "canonicalName": "Banner Maker",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "virtual-gami-editor",
+      "oldName": "Virtual Gami Editor",
+      "canonicalName": "Generative Art Canvas Pro",
+      "family": "generative-art"
+    },
+    {
+      "slug": "virtual-gami-optimizer",
+      "oldName": "Virtual Gami Optimizer",
+      "canonicalName": "Procedural Pattern Maker Studio",
+      "family": "generative-art"
+    },
+    {
+      "slug": "cloud-contwrit-studio-service",
+      "oldName": "Cloud ContWrit Studio Service",
+      "canonicalName": "Image Filter Editor",
+      "family": "image-edit"
+    },
+    {
+      "slug": "virtual-iot-assistant",
+      "oldName": "Virtual Iot/ Assistant",
+      "canonicalName": "Digital Drawing Canvas Express",
+      "family": "drawing"
+    },
+    {
+      "slug": "ai-seo-mark-lab-pro",
+      "oldName": "AI Seo/Mark Lab Pro",
+      "canonicalName": "Image Resizer",
+      "family": "image-edit"
+    },
+    {
+      "slug": "heal-planner-x",
+      "oldName": "Heal Planner X",
+      "canonicalName": "Random Color Generator II",
+      "family": "color"
+    },
+    {
+      "slug": "desi-toolkit-ai",
+      "oldName": "Desi Toolkit AI",
+      "canonicalName": "Poster Maker II",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "tech-generator-2-0",
+      "oldName": "Tech Generator 2.0",
+      "canonicalName": "SVG Viewer Pro",
+      "family": "svg"
+    },
+    {
+      "slug": "smart-spac-assistant",
+      "oldName": "Smart Spac Assistant",
+      "canonicalName": "Radial Gradient Maker Pro",
+      "family": "gradient"
+    },
+    {
+      "slug": "spac-editor-2-0",
+      "oldName": "Spac Editor 2.0",
+      "canonicalName": "CSS Gradient Generator Pro",
+      "family": "gradient"
+    },
+    {
+      "slug": "auto-contwrit-editor-builder",
+      "oldName": "Auto ContWrit Editor Builder",
+      "canonicalName": "Image Rotator",
+      "family": "image-edit"
+    },
+    {
+      "slug": "iot-finder-2-0",
+      "oldName": "Iot/ Finder 2.0",
+      "canonicalName": "Digital Drawing Canvas Pro",
+      "family": "drawing"
+    },
+    {
+      "slug": "desi-planner-assistant",
+      "oldName": "Desi Planner Assistant",
+      "canonicalName": "Education Poster Maker",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "generative-iot-planner",
+      "oldName": "Generative Iot/ Planner",
+      "canonicalName": "Sketch Pad II",
+      "family": "drawing"
+    },
+    {
+      "slug": "busi-synth-assistant",
+      "oldName": "Busi Synth Assistant",
+      "canonicalName": "Color Shades Generator",
+      "family": "color"
+    },
+    {
+      "slug": "cloud-desi-converter-service",
+      "oldName": "Cloud Desi Converter Service",
+      "canonicalName": "Social Post Designer",
+      "family": "canvas-designer"
+    },
+    {
+      "slug": "generative-iot-mapper",
+      "oldName": "Generative Iot/ Mapper",
+      "canonicalName": "Online Drawing Tool II",
+      "family": "drawing"
+    },
+    {
+      "slug": "auto-contwrit-converter-builder",
+      "oldName": "Auto ContWrit Converter Builder",
+      "canonicalName": "Image Cropper",
+      "family": "image-edit"
+    },
+    {
+      "slug": "auto-heal-dashboard-builder",
+      "oldName": "Auto Heal Dashboard Builder",
+      "canonicalName": "Color Converter",
+      "family": "color"
+    },
+    {
+      "slug": "seo-mark-tracker-x",
+      "oldName": "Seo/Mark Tracker X",
+      "canonicalName": "Image Brightness Editor II",
+      "family": "image-edit"
+    },
+    {
+      "slug": "educ-mixer-x",
+      "oldName": "Educ Mixer X",
+      "canonicalName": "Gradient Background Generator II",
+      "family": "gradient"
+    }
+  ]
+}

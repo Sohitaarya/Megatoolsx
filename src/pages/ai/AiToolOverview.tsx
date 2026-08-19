@@ -1,35 +1,39 @@
 import { useOutletContext, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { Sparkles, ExternalLink, Download, ChevronRight, Check, X, Star, Play } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { ToolActions } from '@/components/tool'
 import { getCsvCategoryColor } from '@/lib/utils'
 import type { CsvTool } from '@/data/csvData'
 import type { AiToolDetail } from '@/data/aiToolData'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { aiToolSchema, breadcrumbSchema, webPageSchema, faqSchema } from '@/components/seo/schemas'
 
 export function AiToolOverview() {
   const { tool, detail } = useOutletContext<{ tool: CsvTool; detail: AiToolDetail }>()
   const catColor = getCsvCategoryColor(tool.category)
+  const path = `/ai-tools/${tool.slug}`
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'AI Tools', path: '/ai-tools' },
+    { name: tool.name, path },
+  ]
 
   return (
     <div>
-      <Helmet>
-        <title>{tool.name} - AI Tool Guide, Download & How to Use | MegatoolsX</title>
-        <meta name="description" content={tool.description} />
-        <link rel="canonical" href={`https://megatoolsx.com/ai-tools/${tool.slug}`} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'SoftwareApplication',
-            name: tool.name,
-            description: tool.description,
-            applicationCategory: tool.category,
-            operatingSystem: 'Web, iOS, Android, Windows, macOS',
-            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title={`${tool.name} — AI Tool Guide, How to Use & Download`}
+        description={tool.description}
+        path={path}
+        keywords={`${tool.name}, ai tool, ${tool.category.toLowerCase()}`}
+        type="product"
+        jsonLd={[
+          webPageSchema({ title: `${tool.name} — AI Tool Guide`, description: tool.description, path, breadcrumbs }),
+          aiToolSchema(tool),
+          breadcrumbSchema(breadcrumbs),
+          faqSchema(detail.faqs.slice(0, 5)),
+        ]}
+      />
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         {/* Tool actions */}

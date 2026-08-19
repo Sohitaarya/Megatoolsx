@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Heart, Activity, Sun, Moon, Brain, Dumbbell, Apple, BookOpen, Coffee, Smile, Briefcase, Home, Users, Target, Sparkles, Clock, Calendar, TrendingUp, Star, Shield } from 'lucide-react'
 import type { CsvTool } from '@/data/csvData'
 import { ToolWrapper, ActionButton, OutputBox, InputField, SelectField, useToolState } from './ToolWrapper'
+import { CapabilityTool } from '../CapabilityTool'
 
 export function PersonalLifestyleTools({ tool }: { tool: CsvTool }) {
   const { input, setInput, output, setOutput, processing, setProcessing } = useToolState()
@@ -27,16 +28,7 @@ export function PersonalLifestyleTools({ tool }: { tool: CsvTool }) {
   if (name.includes('learning') || name.includes('skill')) return <SkillTracker tool={tool} />
 
   return (
-    <ToolWrapper tool={tool}>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"><Sun className="w-6 h-6 text-emerald-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Lifestyle</div></div>
-        <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-center"><Heart className="w-6 h-6 text-purple-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Wellness</div></div>
-        <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center"><Star className="w-6 h-6 text-blue-400 mx-auto" /><div className="text-xs text-gray-500 mt-1">Personal</div></div>
-      </div>
-      <InputField value={input} onChange={setInput} placeholder={`Enter ${tool.name.toLowerCase()} input...`} label="Input" multiline icon={Heart} />
-      <ActionButton onClick={() => { setProcessing(true); setTimeout(() => { setOutput(`✨ ${tool.name} Results\n\nInput: ${input || 'Default'}\nStatus: Completed\n\n✅ Ready for you\n📊 Personalized results generated`); setProcessing(false) }, 800) }} icon={Sparkles} label={`Run ${tool.name}`} />
-      {output && <OutputBox value={output} />}
-    </ToolWrapper>
+    <CapabilityTool tool={tool} />
   )
 }
 

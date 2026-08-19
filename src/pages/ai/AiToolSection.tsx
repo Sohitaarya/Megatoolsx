@@ -1,6 +1,5 @@
 import { useOutletContext, Link, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import {
   Download, Settings, BookOpen, Grid3X3, DollarSign, ThumbsUp, Shuffle,
   HelpCircle, Shield, Lightbulb, Play, Check, X, ExternalLink, ChevronRight,
@@ -9,6 +8,8 @@ import { Button } from '@/components/ui'
 import { getCsvCategoryColor } from '@/lib/utils'
 import type { CsvTool } from '@/data/csvData'
 import type { AiToolDetail } from '@/data/aiToolData'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { breadcrumbSchema, webPageSchema, faqSchema } from '@/components/seo/schemas'
 
 export function AiToolSection() {
   const { tool, detail } = useOutletContext<{ tool: CsvTool; detail: AiToolDetail }>()
@@ -39,14 +40,26 @@ export function AiToolSection() {
   }
   const Icon = icons[s] || BookOpen
   const title = titles[s] || 'Guide'
+  const path = `/ai-tools/${tool.slug}/${s}`
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'AI Tools', path: '/ai-tools' },
+    { name: tool.name, path: `/ai-tools/${tool.slug}` },
+    { name: title, path },
+  ]
 
   return (
     <div>
-      <Helmet>
-        <title>{title} - {tool.name} | MegatoolsX</title>
-        <meta name="description" content={`${title} guide for ${tool.name}. ${tool.description}`} />
-        <link rel="canonical" href={`https://megatoolsx.com/ai-tools/${tool.slug}/${s}`} />
-      </Helmet>
+      <SEOHead
+        title={`${title} — ${tool.name}`}
+        description={`${title} guide for ${tool.name}. ${tool.description}`}
+        path={path}
+        jsonLd={[
+          webPageSchema({ title: `${title} — ${tool.name}`, description: `${title} guide for ${tool.name}.`, path, breadcrumbs }),
+          breadcrumbSchema(breadcrumbs),
+          ...(s === 'faq' ? [faqSchema(detail.faqs)] : []),
+        ]}
+      />
 
       <motion.div key={s} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <div className="flex items-center gap-4 mb-8">
@@ -204,17 +217,6 @@ export function AiToolSection() {
                   <p className="text-gray-400 text-sm leading-relaxed">{f.a}</p>
                 </div>
               ))}
-              <script type="application/ld+json" dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  '@context': 'https://schema.org',
-                  '@type': 'FAQPage',
-                  mainEntity: detail.faqs.map(f => ({
-                    '@type': 'Question',
-                    name: f.q,
-                    acceptedAnswer: { '@type': 'Answer', text: f.a },
-                  })),
-                }),
-              }} />
             </div>
           )}
 
