@@ -1,5 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { normalizeSearchAnalytics, classifyGscError, fetchSearchAnalytics } from '@/seo/monitoring/searchConsole'
+import * as searchConsole from '@/seo/monitoring/searchConsole'
 import { matchPageToEntity, buildToolSeoInsight, splitBrandNonBrand, analyzePositionOpportunities } from '@/seo/monitoring/analysis'
 import { generateOpportunities, priorityFrom, priorityTier } from '@/seo/monitoring/opportunities'
 import { isBrandQuery, summarizeBrandQueries } from '@/seo/monitoring/brandQueries'
@@ -593,6 +594,7 @@ describe('verifyGscConnection', () => {
   })
 
   it('returns non-NOT_CONFIGURED status when credentials present', async () => {
+    vi.spyOn(searchConsole, 'buildSearchConsoleReport').mockResolvedValue({ performance: { status: 'error', message: 'UNKNOWN_ERROR' }, indexing: { status: 'unavailable', reason: 'test' } } as any)
     const mockEnv = { GOOGLE_ACCESS_TOKEN: 'token' }
     const result = await verifyGscConnection(mockEnv as any)
     expect(result.status).not.toBe('NOT_CONFIGURED')

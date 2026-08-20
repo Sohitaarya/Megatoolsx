@@ -27,23 +27,6 @@ export function DesignCreativeTool({ tool }: { tool: CsvTool }) {
   const workspaceRef = useRef<HTMLDivElement>(null)
   const [exported, setExported] = useState(false)
 
-  // Honest non-working states first.
-  if (cap.status === 'needs-data-fix') {
-    return (
-      <Alert variant="warning" title="Not implemented">
-        {tool.name} is an auto-generated CSV name with no real design function. It is NOT marked as working.
-        Replace the CSV tool name with a real design capability to implement it.
-      </Alert>
-    )
-  }
-  if (cap.status === 'requires-configuration') {
-    return (
-      <Alert variant="info" title="Requires configuration">
-        Real 3D model generation needs an external 3D AI service + API key. Not marked as working until configured.
-      </Alert>
-    )
-  }
-
   const dims = cap.dimensions ?? { width: 1024, height: 1024 }
 
   const render = useCallback(() => {
@@ -82,7 +65,6 @@ export function DesignCreativeTool({ tool }: { tool: CsvTool }) {
         }
       }
 
-      // Replace the displayed canvas (imperative — React doesn't own the canvas node).
       workspaceRef.current?.replaceChildren(canvas)
       analyticsApi.trackEvent('design_tool_run', { tool: tool.slug })
     } catch (e) {
@@ -93,8 +75,23 @@ export function DesignCreativeTool({ tool }: { tool: CsvTool }) {
     }
   }, [cap.family, dims.width, dims.height, background, accent, title, subtitle, seed, complexity, tool.slug])
 
-  // Render once on mount so the workspace is never blank.
   useEffect(() => { render() }, [render])
+
+  if (cap.status === 'needs-data-fix') {
+    return (
+      <Alert variant="warning" title="Not implemented">
+        {tool.name} is an auto-generated CSV name with no real design function. It is NOT marked as working.
+        Replace the CSV tool name with a real design capability to implement it.
+      </Alert>
+    )
+  }
+  if (cap.status === 'requires-configuration') {
+    return (
+      <Alert variant="info" title="Requires configuration">
+        Real 3D model generation needs an external 3D AI service + API key. Not marked as working until configured.
+      </Alert>
+    )
+  }
 
   const exportImage = async (format: 'png' | 'jpg') => {
     const canvas = workspaceRef.current?.firstChild as HTMLCanvasElement | undefined

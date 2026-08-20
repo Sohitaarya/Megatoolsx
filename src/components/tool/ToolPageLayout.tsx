@@ -11,10 +11,6 @@ export function ToolPageLayout() {
   const [tool, setTool] = useState<CsvTool | null>(null)
   const [loading, setLoading] = useState(true)
 
-  // Legacy (un-normalized) slug → permanent redirect to the canonical slug.
-  const redirect = toolName ? redirectFor(toolName) : undefined
-  if (redirect) return <Navigate to={`/tools/${redirect}`} replace />
-
   useEffect(() => {
     if (toolName) {
       setLoading(true)
@@ -23,6 +19,9 @@ export function ToolPageLayout() {
       setLoading(false)
     }
   }, [toolName, getToolBySlug])
+
+  const redirect = toolName ? redirectFor(toolName) : undefined
+  if (redirect) return <Navigate to={`/tools/${redirect}`} replace />
 
   const sameCategory = tool
     ? csvTools.filter(t => t.category === tool.category && t.slug !== tool.slug)
