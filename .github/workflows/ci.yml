@@ -73,11 +73,11 @@ jobs:
           name: dist
           path: dist
 
-      # 🔥 यहाँ से "Sanitize Cloudflare secrets" वाला Step हटा दिया गया है
-      # अब हम Token को सीधे Command में Pass कर रहे हैं
-
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler pages deploy dist --project-name=megatoolsx --api-token="${{ secrets.CLOUDFLARE_API_TOKEN }}" --account-id="${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler pages deploy dist --project-name=megatoolsx
 
   preview:
     name: Deploy preview (PR)
@@ -100,7 +100,8 @@ jobs:
           name: dist
           path: dist
 
-      # 🔥 यहाँ से भी "Sanitize Cloudflare secrets" वाला Step हटा दिया गया है
-
       - name: Deploy preview to Cloudflare Pages
-        run: npx wrangler pages deploy dist --project-name=megatoolsx --branch=${{ github.head_ref }} --api-token="${{ secrets.CLOUDFLARE_API_TOKEN }}" --account-id="${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler pages deploy dist --project-name=megatoolsx --branch=${{ github.head_ref }}s
