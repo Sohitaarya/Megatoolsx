@@ -73,18 +73,11 @@ jobs:
           name: dist
           path: dist
 
-      - name: Sanitize Cloudflare secrets
-        run: |
-          CF_TOKEN=$(printf '%s' "${{ secrets.CLOUDFLARE_API_TOKEN }}" | tr -d '\r\n' | xargs)
-          CF_ACCOUNT=$(printf '%s' "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" | tr -d '\r\n' | xargs)
-          echo "::add-mask::$CF_TOKEN"
-          echo "::add-mask::$CF_ACCOUNT"
-          echo "CLOUDFLARE_API_TOKEN=$CF_TOKEN" >> "$GITHUB_ENV"
-          echo "CLOUDFLARE_ACCOUNT_ID=$CF_ACCOUNT" >> "$GITHUB_ENV"
-        shell: bash
+      # 🔥 यहाँ से "Sanitize Cloudflare secrets" वाला Step हटा दिया गया है
+      # अब हम Token को सीधे Command में Pass कर रहे हैं
 
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler pages deploy dist --project-name=megatoolsx
+        run: npx wrangler pages deploy dist --project-name=megatoolsx --api-token="${{ secrets.CLOUDFLARE_API_TOKEN }}" --account-id="${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
 
   preview:
     name: Deploy preview (PR)
@@ -107,15 +100,7 @@ jobs:
           name: dist
           path: dist
 
-      - name: Sanitize Cloudflare secrets
-        run: |
-          CF_TOKEN=$(printf '%s' "${{ secrets.CLOUDFLARE_API_TOKEN }}" | tr -d '\r\n' | xargs)
-          CF_ACCOUNT=$(printf '%s' "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" | tr -d '\r\n' | xargs)
-          echo "::add-mask::$CF_TOKEN"
-          echo "::add-mask::$CF_ACCOUNT"
-          echo "CLOUDFLARE_API_TOKEN=$CF_TOKEN" >> "$GITHUB_ENV"
-          echo "CLOUDFLARE_ACCOUNT_ID=$CF_ACCOUNT" >> "$GITHUB_ENV"
-        shell: bash
+      # 🔥 यहाँ से भी "Sanitize Cloudflare secrets" वाला Step हटा दिया गया है
 
       - name: Deploy preview to Cloudflare Pages
-        run: npx wrangler pages deploy dist --project-name=megatoolsx --branch=${{ github.head_ref }}
+        run: npx wrangler pages deploy dist --project-name=megatoolsx --branch=${{ github.head_ref }} --api-token="${{ secrets.CLOUDFLARE_API_TOKEN }}" --account-id="${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
